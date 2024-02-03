@@ -24,7 +24,6 @@ jobs:
 
       - name: Build project
         run: |
-          cd my-portfolio-website
           npm install
           npm run build
 
@@ -32,7 +31,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: production-files
-          path: my-portfolio-website/dist
+          path: ./dist
 
   deploy:
     name: Deploy
@@ -45,10 +44,10 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: production-files
-          path: my-portfolio-website/dist
+          path: ./dist
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: my-portfolio-website/dist
+          publish_dir: ./dist
