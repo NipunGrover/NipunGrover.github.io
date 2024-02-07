@@ -15,6 +15,12 @@
 	font-weight: 400;
 }
 
+@media (max-width: 576px) {
+  .align-items-center {
+    flex-direction: column;
+  }
+}
+
 /************ Default Css ************/
 * {
   margin: 0;
@@ -34,8 +40,12 @@ body {
   background-color: #121212 !important;
   color: #fff !important;
   font-family: 'Centra', sans-serif !important;
-  padding-left: 15px !important;
-  zoom: 108% !important;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  /* padding-left: 15px !important;
+  zoom: 108% !important; */
 }
 
 h1, h2, h3, h4, h5, h6 {
