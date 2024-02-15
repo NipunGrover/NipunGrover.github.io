@@ -14,6 +14,7 @@ export const Projects = () => {
                 title: "Notepad Online",
                 description: "Simple web based notepad using JS and .NET. Stores files on cloud. Click to see more details!",
                 imgUrl: notepadOnlineSS,
+                link: "https://github.com/NipunGrover/NotepadOnline"
                 
             },
             {
