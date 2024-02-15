@@ -6,7 +6,7 @@ import {useEffect, useState} from "react";
 
 import logo from '../assets/images/logo.svg';
 import navIcon1 from '../assets/images/nav-icon1.svg';
-import navIcon2 from '../assets/images/nav-icon2.svg';
+import navIcon2 from '../assets/images/github-logo.svg';
 import navIcon3 from '../assets/images/nav-icon3.svg';
 
 
@@ -53,9 +53,9 @@ useEffect(() => {
           <span className="navbar-text">
           {/*this is where all the social media icons will be */}
             <div className="social-icon">
-              <a href="#"><img src={navIcon1}/></a>
-              <a href="#"><img src={navIcon2}/></a>
-              <a href="#"><img src={navIcon3}/></a>
+              <a href="https://www.linkedin.com/in/nipun-grover-450b83167/" target='_blank'><img src={navIcon1}/></a>
+              <a href="https://github.com/NipunGrover" target="_blank"><img src={navIcon2}/></a>
+
             </div>
             {/*console log is just to be replaced later on for actual navigation to the contact form on our application*/}
             <a href="#connect">
