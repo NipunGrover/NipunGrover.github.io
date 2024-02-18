@@ -21,12 +21,13 @@ export const Projects = () => {
                 title: "Word Search Game",
                 description: "WPF based word search game with C# backend and TCP connection. Supports multiple clients. Click to check out more details!",
                 imgUrl: stringGameSS,
-                link: "https://www.google.com",
+                link: "https://github.com/nipun-grover/word-search-game"
             },
             {
                 title: "This Portfolio Website",
                 description: "React based portfolio website. Click for more!",
                 imgUrl: porfolioWebsiteSS,
+                link: "https://github.com/NipunGrover/NipunGrover.github.io"
             },
         ],
         [
