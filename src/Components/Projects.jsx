@@ -48,10 +48,10 @@ export const Projects = () => {
                         <Tab.Container defaultActiveKey="first">
                             <Nav variant="pills">
                                 <Nav.Item id="projects-tabs-tab-first">
-                                <Nav.Link eventKey="first" >Tab 1</Nav.Link>
+                                <Nav.Link eventKey="first" >Featured Projects</Nav.Link>
                                 </Nav.Item>
                                 <Nav.Item id="projects-tabs-tab-second">
-                                <Nav.Link eventKey="second" >Tab 2</Nav.Link>
+                                <Nav.Link eventKey="second" >Other work</Nav.Link>
                                 </Nav.Item>
               
                             </Nav>
@@ -59,12 +59,11 @@ export const Projects = () => {
                                 <Tab.Pane eventKey="first">
                                     <Row>
                                     {
-
+                                        
                                         projects[0].map((project, index) => (
                                                 <ProjectCard
                                                     key={index}
                                                     {...project}
-                                                    onClick={() => console.log('Project clicked!')}
                                                     />
                                             )
                                             )
@@ -75,8 +74,8 @@ export const Projects = () => {
                                 <Tab.Pane eventKey="second">
                                     <Row>
                                         {projects[1].map((project, index) => (
-                                            <ProjectCard key={index} {...project} 
-                                            onClick={() => console.log('Project clicked!')}
+                                            <ProjectCard key={index} 
+                                            {...project} 
                                             />
                                         ))}
                                     </Row>
