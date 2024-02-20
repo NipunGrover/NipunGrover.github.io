@@ -35,6 +35,7 @@ export const Projects = () => {
                 title: "Shelter Management App",
                 description: "Coming soon! Click to view more details",
                 imgUrl: shelterManagementSS,
+                link: "https://github.com/NipunGrover/ShelterManagementApp"
                 },
         ],
     ];
