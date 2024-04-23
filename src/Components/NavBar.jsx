@@ -17,6 +17,8 @@ export const NavBar = () => {
   const [activeLink, setActiveLink] = useState('home');
   const [scrolled, setScrolled] = useState(false);
 
+//this is checking if the user has scrolled down the page, if they have, the navbar will change its style
+//Navbar className has been set in the code below, then css is used to style the navbar acc to scrolled state
 useEffect(() => {
   const onScroll = () => {
     if(window.scrollY > 50) {

@@ -17,11 +17,12 @@ export const Banner = () => {
     //indicates the portion of the word being displayed
     const [text, setText] = useState('');
 
-    //this is to indicate the speed of the typing
+    // Variable to indicate the pause between typing and deleting
     const period = 2000;
 
     const [delta, setDelta] = useState(300 - Math.random() * 100 );
 
+    // useEffect hook to handle the typing/deleting effect
     useEffect(() => {
         // This function will be called every `delta` milliseconds
         let ticker = setInterval(() => {
@@ -32,6 +33,7 @@ export const Banner = () => {
     }, [text]) 
     //text is the dependence, so when text changes, the ticker is umounted and use effect is called again
 
+    // Function to handle the typing/deleting effect
     const tick = () => {
 
         let i = loopNum % toRotate.length; //this is to get the index of the word in the array
@@ -41,14 +43,17 @@ export const Banner = () => {
 
         setText(updatedText); 
 
+        // Adjust the typing speed when deleting
         if (isDeleting) {
             setDelta(prevDelta => prevDelta/2);
         
         }
+        // If the word is fully typed, start deleting
         if (!isDeleting && updatedText === fullText) {
             setDelta( period );
             setIsDeleting(true);
         }
+        // If the word is fully deleted, start typing the next word
         else if (isDeleting && updatedText === '') {
             setIsDeleting(false);
             setLoopNum(loopNum + 1);
@@ -59,6 +64,7 @@ export const Banner = () => {
         
     }
 
+    //render the banner component
     return (
 
         <section className="banner" id="home" >
@@ -66,7 +72,7 @@ export const Banner = () => {
                 <Row className="align-items-center">
                     <Col xs={12} md={6} xl={7}>
                         <span className="tagline">Welcome to my Portfolio</span>
-                        <h1>Hi, I'm Nipun, {loopNum === 2 ? 'an' : 'a'}<span className="wrap" style={{minWidth: '500px', display: 'inline-block', height:"1em", overflow:"hidden"}}>{text}</span></h1>
+                        <h1>Hi, I'm Nipun, {loopNum === 2 ? 'an' : 'a'}<span className="wrap" style={{minWidth: '500px', display: 'inline-block', height:"1.1em", overflow:"hidden"}}>{text}</span></h1>
                         <p>An aspiring Developer with enthusiasm to learn<br/> 🚀 Transforming ideas into code<br/>⌨ one keystroke at a time</p>
                         <a href="#connect">
                             <button onClick= {() => console.log('connect')}>Let's connect <ArrowRightCircle size={25}/>
@@ -83,8 +89,6 @@ export const Banner = () => {
             </Container>
 
         </section>
-
-
 
     );
 }

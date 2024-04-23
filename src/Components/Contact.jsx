@@ -75,8 +75,8 @@ export const Contact = () => {
                                     onChange={(e) => onFormUpdate('email', e.target.value)}/>
                                 </Col>
                                 <Col sm={6} className="px-1">
-                                    <input type="tel" value={formDetails.phone} placeholder="phone" 
-                                    onChange={(e) => onFormUpdate('phone', e.target.value)}/>
+                                    <input type="tel" value={formDetails.phone} placeholder="Phone" 
+                                    onChange={(e) => onFormUpdate('Phone', e.target.value)}/>
                                 </Col>
                                 <Col sm={6} className="px-1">
                                     <textarea row="6" value={formDetails.message} placeholder="Message" 
