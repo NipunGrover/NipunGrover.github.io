@@ -5,6 +5,7 @@ import notepadOnlineSS from "../assets/images/notepadOnlineSS.jpg";
 import stringGameSS from "../assets/images/string-game-ss.jpg";
 import shelterManagementSS from "../assets/images/shelter-management-app-ss.jpg";
 import porfolioWebsiteSS from "../assets/images/portfolio-website-ss.jpg";
+import financeApp from "../assets/images/finance-app.jpg";
 
 export const Projects = () => {
 
@@ -31,13 +32,19 @@ export const Projects = () => {
             },
         ],
         [
-                {
+            {
                 title: "Shelter Management App",
                 description: "Coming soon! Click to view more details",
                 imgUrl: shelterManagementSS,
                 link: "https://github.com/NipunGrover/ShelterManagementApp"
-                },
-        ],
+            },
+            {
+                title: "Financial Data Tracker App",
+                description: "React + TypeScript based. ASP.NET for backend. Under construction 🚧. Click to view Github repo",
+                imgUrl: financeApp,
+                link: "https://github.com/NipunGrover/FinanceProject"
+            },
+    ],
     ];
 
     return (
