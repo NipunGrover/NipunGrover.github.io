@@ -7,7 +7,7 @@ import express from 'express';
 config();
 
 const app = express();
-const port = process.env.PORT || 5173;
+const port = process.env.PORT || 3001;
 
 app.get("/contact", (req, res) => {
   res.json({ message: "Hello from server!" })
