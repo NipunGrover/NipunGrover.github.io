@@ -31,6 +31,7 @@ export const Contact = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setButtonText('Sending...');
+        try{
         let response = await fetch("http://localhost:5173/contact", {
             method: "POST",
             headers: {
@@ -38,20 +39,28 @@ export const Contact = () => {
             },
             body: JSON.stringify(formDetails),
         });
-        setButtonText("Send");
-        let result = response.json();
-        setFormDetails(formInitialDetails);
-        if (result.code === 200){
-            setStatus({
-                sucess: true,
-                message: "Message Sent"
-            });
+        if (response.ok){
+      
+            let result = await response.json();
+            setStatus({ success: true, message: "Message Sent" });
+            setFormDetails(formInitialDetails);
+        } else {
+            throw new Error('Failed to send message');
+        }
+    } catch(error) {
+        // if (result.code === 200){
+        //     setStatus({
+        //         sucess: true,
+        //         message: "Message Sent"
+        //     });
             setStatus({
                 success: false, 
                 message: "Message Failed to send, Please Try Again"
             });
-
+        } finally {
+            setButtonText("Send");
         }
+        
 
     }
 

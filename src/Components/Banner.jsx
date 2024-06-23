@@ -6,7 +6,7 @@ import {useState, useEffect} from 'react';
 
 export const Banner = () => {
     //these are the words displayed on the banner
-    const toRotate = ["Software Developer", "Cinephile", "Team Player"]
+    const toRotate = ["Software Developer", "Team Player" ,"Cinephile"]
 
     //this is to indicate if the word is being deleted or being typed
     const [isDeleting, setIsDeleting] = useState(false);

@@ -1,8 +1,21 @@
 import nodemailer from 'nodemailer';
 import {config} from 'dotenv';
+import cors from 'cors';
+import express from 'express';
 
 
 config();
+
+const app = express();
+const port = process.env.PORT || 5173;
+
+app.get("/contact", (req, res) => {
+  res.json({ message: "Hello from server!" })
+});
+
+
+app.use(cors());
+app.use(express.json());
 
 const transporter = nodemailer.createTransport({
   service: 'outlook',
@@ -15,26 +28,41 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-const mailOptions = {
-  from: {
-    name: "Portolio Contact",
-    address: process.env.EMAIL_USER,
-  },
-  to: "nipunshopping@outlook.com",
-  subject: "New Contact email from portolio website",
-  text: "hello world",
-  html: "<b>Hello world?</b>",
-  
-}
+app.post('/contact', async(req, res) => {
+  console.log("api call made");
+  const {name, email, phone, message} = req.body;
+  const mailOptions = {
+    from: {
+      name: "Portolio Contact",
+      address: process.env.EMAIL_USER,
+    },
+    to: "nipunshopping@outlook.com",
+    subject: `New Contact email from portolio website from: ${name}`,
+    text: "hello world",
+    html: `<p>You have a new contact from:</p>
+            <ul>
+              <li>Name: ${name}</li>
+              <li>Email: ${email}</li>
+              <li>Phone: ${phone}</li>
+              <li>Message: ${message}</li>
+            </ul>`,
+    
+  };
 
-const sendMail = async (transporter, mailOptions) => {
+  //const sendMail = async (transporter, mailOptions) =>
   try{
     await transporter.sendMail(mailOptions); 
-  } catch(error)
-  {
+    res.status(200).send({ message: "Email sent successfully" });
+  } catch(error){
     console.log(error);
+    res.status(500).send({ message: "Failed to send email" });
   }
 
-}
+});
 
-sendMail(transporter, mailOptions);
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
+
+
+//sendMail(transporter, mailOptions);
