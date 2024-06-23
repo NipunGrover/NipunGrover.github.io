@@ -32,7 +32,7 @@ export const Contact = () => {
         e.preventDefault();
         setButtonText('Sending...');
         try{
-        let response = await fetch("http://localhost:3001/contact", {
+        let response = await fetch("https://damp-badlands-16343-6f115056a401.herokuapp.com/contact", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json;charset=utf-8",
