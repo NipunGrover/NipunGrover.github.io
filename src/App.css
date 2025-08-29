@@ -60,10 +60,11 @@
     font-size: 36px;
   }
   .banner .wrap {
-    display: inline-block;
-    min-width: 0; /* prevent overflow on small screens */
-    height: 1.1em;
-    overflow: hidden;
+    display: block;          /* force new line on small screens */
+    min-width: 0;
+    height: auto;
+    overflow: visible;
+    white-space: normal;
   }
   .banner p {
     width: 100%;
@@ -358,6 +359,10 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   line-height: 1;
   margin-bottom: 20px;
   display: block;
+}
+.banner .wrap {
+  display: inline;
+  white-space: normal;
 }
 .banner p {
   color: #B8B8B8;
