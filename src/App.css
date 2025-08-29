@@ -16,9 +16,89 @@
 }
 
 @media (max-width: 576px) {
+  /* Layout helpers */
   .align-items-center {
     flex-direction: column;
   }
+
+  /* Navbar: ensure visibility + spacing on mobile */
+  nav.navbar {
+    padding: 12px 0;
+    background-color: #121212; /* keep contrast so toggler is visible */
+  }
+  nav.navbar a.navbar-brand {
+    width: auto;
+  }
+  .navbar-logo {
+    width: 48px;
+    height: 48px;
+  }
+  nav.navbar .navbar-collapse {
+    background: #121212; /* collapsed menu background */
+    padding: 8px 12px 16px;
+    border-radius: 12px;
+    margin-top: 8px;
+  }
+  nav.navbar .navbar-nav .nav-link.navbar-link {
+    padding: 8px 0;
+    font-size: 16px;
+    text-align: center;
+  }
+  span.navbar-text {
+    width: 100%;
+    justify-content: center;
+    margin-top: 8px;
+  }
+  .social-icon { margin-left: 0; }
+
+  /* Banner: scale text and center content */
+  .banner {
+    padding: 110px 0 70px 0;
+    text-align: center;
+  }
+  .banner h1 {
+    font-size: 36px;
+  }
+  .banner .wrap {
+    display: inline-block;
+    min-width: 0; /* prevent overflow on small screens */
+    height: 1.1em;
+    overflow: hidden;
+  }
+  .banner p {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .banner button {
+    margin: 24px auto 0;
+  }
+
+  /* Skills */
+  .skill-bx {
+    border-radius: 28px;
+    padding: 36px 20px;
+    margin-top: -30px;
+  }
+  .skill h2 { font-size: 32px; }
+  .skill p { font-size: 16px; margin: 12px 0 30px 0; }
+  .skill-slider { width: 100%; }
+  .skill-slider .item img { width: 64%; }
+
+  /* Projects */
+  .project { padding: 56px 0; border-radius: 24px; }
+  .project h2 { font-size: 32px; }
+  .project p { width: 92%; font-size: 16px; }
+  .project .nav.nav-pills { width: 100%; }
+  .proj-imgbox { border-radius: 20px; }
+
+  /* Contact */
+  .contact h2 { font-size: 32px; text-align: center; }
+  .contact img { margin-bottom: 16px; }
+  .new-email-bx { flex-direction: column; }
+  .new-email-bx button { width: 100%; margin-top: 10px; }
+
+  /* Footer */
+  .footer img { width: 44%; }
 }
 
 
@@ -41,13 +121,9 @@ body {
   background-color: #121212 !important;
   color: #fff !important;
   font-family: 'Centra', sans-serif !important;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  /* padding-left: 15px !important;
-  zoom: 108% !important; */
+  /* Use normal document flow; do not center everything */
+  display: block;
+  width: auto;
 }
 
 
@@ -737,4 +813,3 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   padding-top: 10px;
   border-radius: 30px;
 }
-

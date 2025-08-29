@@ -41,7 +41,7 @@ useEffect(() => {
       <Container>
       {/* Brand logo */}
         <Navbar.Brand href="#home"><img src={logo} alt="Logo" className="navbar-logo"/></Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav">
+        <Navbar.Toggle aria-controls="basic-navbar-nav" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
         </Navbar.Toggle>
 
