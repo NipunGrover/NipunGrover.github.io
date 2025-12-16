@@ -346,7 +346,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   font-weight: 700;
   letter-spacing: 0.8px;
   padding: 8px 10px;
-  background: linear-gradient(90.21deg, rgba(170, 54, 124, 0.5) -5.91%, rgba(74, 47, 189, 0.5) 111.58%);
+  background: linear-gradient(90.21deg, rgba(243, 198, 70, 0.5) -5.91%, rgba(254, 95, 74, 0.5) 111.58%);
   border: 1px solid rgba(255, 255, 255, 0.5);
   font-size: 20px;
   margin-bottom: 16px;
@@ -500,7 +500,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     position: absolute;
     width: 0;
     height: 100%;
-    background: linear-gradient(90.21deg, #AA367C -5.91%, #4A2FBD 111.58%);
+    background: linear-gradient(90.21deg, #F3C646 -5.91%, #FE5F4A 111.58%);
     top: 0;
     left: 0;
     z-index: -1;
@@ -542,7 +542,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 .proj-imgbox::before {
   content: "";
-  background: linear-gradient(90.21deg, #AA367C -5.91%, #4A2FBD 111.58%);
+  background: linear-gradient(90.21deg, #F3C646 -5.91%, #FE5F4A 111.58%);
   opacity: 0.85;
   position: absolute;
   width: 100%;
@@ -572,6 +572,21 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   top: 50%;
   opacity: 0.1;
 
+}
+.proj-card-button {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  text-align: inherit;
+  cursor: pointer;
+}
+.proj-card-button:focus-visible {
+  outline: none;
+}
+.proj-card-button:focus-visible .proj-imgbox {
+  outline: 3px solid rgba(243, 198, 70, 0.95);
+  outline-offset: 4px;
 }
 .proj-txtx {
   position: absolute;
@@ -614,7 +629,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 /************ Projects Css ************/
 .contact {
-  background: linear-gradient(90.21deg, #AA367C -5.91%, #4A2FBD 111.58%);
+  background: linear-gradient(90.21deg, #F3C646 -5.91%, #FE5F4A 111.58%);
 
 }
 .contact img {
@@ -716,7 +731,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 .new-email-bx::before {
   content: "";
-  background: linear-gradient(90.21deg, #AA367C -5.91%, #4A2FBD 111.58%);
+  background: linear-gradient(90.21deg, #F3C646 -5.91%, #FE5F4A 111.58%);
   border-radius: 20px;
   position: absolute;
   z-index: -1;
@@ -745,7 +760,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   padding: 0 15px;
 }
 .new-email-bx button {
-  background: linear-gradient(90.21deg, #AA367C -5.91%, #4A2FBD 111.58%);
+  background: linear-gradient(90.21deg, #F3C646 -5.91%, #FE5F4A 111.58%);
   padding: 20px 65px;
   color: #fff;
   font-weight: 500;
@@ -795,6 +810,149 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   height: 100%;
   object-fit: cover;
   border-radius: 30px;
+}
+
+/************ Project Modal ************/
+.project-modal-dialog {
+  max-width: 980px;
+}
+.project-modal-content {
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #1f2a35;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.65);
+}
+.project-modal__topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  background: linear-gradient(90.21deg, #F3C646 -5.91%, #FE5F4A 111.58%);
+}
+.project-modal__topbar-title {
+  color: #151515;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+}
+.project-modal__close {
+  border: 0;
+  background: transparent;
+  color: #151515;
+  font-size: 24px;
+  line-height: 1;
+  padding: 2px 6px;
+  opacity: 0.85;
+}
+.project-modal__close:hover {
+  opacity: 1;
+}
+.project-modal__body {
+  padding: 26px;
+  color: #E8EDF2;
+  background:
+    radial-gradient(1100px circle at 0% 0%, rgba(255, 255, 255, 0.06), transparent 45%),
+    #1f2a35;
+}
+.project-modal__grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 26px;
+}
+.project-modal__title {
+  margin: 0 0 10px;
+  color: #fff;
+  font-size: 44px;
+  line-height: 1.05;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+.project-modal__subtitle {
+  margin: 0 0 18px;
+  font-size: 15.5px;
+  line-height: 1.55;
+  color: rgba(232, 237, 242, 0.82);
+}
+.project-modal__section-title {
+  margin: 18px 0 10px;
+  font-size: 18px;
+  font-weight: 800;
+  color: #fff;
+}
+.project-modal__list {
+  margin: 0;
+  padding-left: 18px;
+  color: rgba(232, 237, 242, 0.92);
+}
+.project-modal__list li {
+  margin: 10px 0;
+  line-height: 1.45;
+}
+.project-modal__actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+.project-modal__action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 700;
+  color: #151515;
+  background: linear-gradient(90.21deg, #F3C646 -5.91%, #FE5F4A 111.58%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.project-modal__action-btn:hover {
+  filter: brightness(1.02);
+  color: #151515;
+}
+.project-modal__media-title {
+  margin: 8px 0 12px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 800;
+}
+.project-modal__media-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-height: 520px;
+  overflow: auto;
+  padding-right: 6px;
+}
+.project-modal__media-card {
+  border-radius: 14px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+.project-modal__media-caption {
+  margin: 0 0 10px;
+  color: rgba(232, 237, 242, 0.86);
+  font-size: 13px;
+  font-weight: 800;
+}
+.project-modal__media-img {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+}
+@media (max-width: 992px) {
+  .project-modal__grid {
+    grid-template-columns: 1fr;
+  }
+  .project-modal__media-stack {
+    max-height: none;
+    overflow: visible;
+    padding-right: 0;
+  }
+  .project-modal__title {
+    font-size: 36px;
+  }
 }
 
 
