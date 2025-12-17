@@ -37,7 +37,7 @@ useEffect(() => {
   }
 
   return (
-    <Navbar expand="lg" className={scrolled ? "scrolled": ""}>
+    <Navbar expand="lg" fixed="top" className={scrolled ? "scrolled": ""}>
       <Container>
       {/* Brand logo */}
         <Navbar.Brand href="#home"><img src={logo} alt="Logo" className="navbar-logo"/></Navbar.Brand>
