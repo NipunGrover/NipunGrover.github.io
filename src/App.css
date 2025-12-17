@@ -183,7 +183,8 @@ body {
   position: relative;
   background-color: #121212 !important;
   color: #fff !important;
-  font-family: 'Centra', sans-serif !important;
+  font-family: "articulat-cf", sans-serif !important;
+  font-weight: 800;
   /* Use normal document flow; do not center everything */
   display: block;
   width: auto;
@@ -257,11 +258,15 @@ nav.navbar {
   /* top: 0;           Removed: handled by fixed="top" prop */
   z-index: 1020;
   transition: 0.32s ease-in-out;
+  transform: translateY(-100%);
+  /* Hidden by default */
 }
 
 nav.navbar.scrolled {
   padding: 0px 0;
   background-color: #121212;
+  transform: translateY(0);
+  /* Visible when scrolled */
 }
 
 nav.navbar a.navbar-brand {
@@ -290,6 +295,7 @@ nav.navbar .navbar-nav a.nav-link.navbar-link.active {
 span.navbar-text {
   display: flex;
   align-items: center;
+  gap: 18px;
 }
 
 .social-icon {
@@ -298,8 +304,8 @@ span.navbar-text {
 }
 
 .social-icon a {
-  width: 42px;
-  height: 42px;
+  width: 48px;
+  height: 48px;
   background: rgba(217, 217, 217, 0.1);
   display: inline-flex;
   border-radius: 50%;
@@ -312,8 +318,8 @@ span.navbar-text {
 
 .social-icon a::before {
   content: "";
-  width: 42px;
-  height: 42px;
+  width: 48px;
+  height: 48px;
   position: absolute;
   background-color: #ffffff;
   border-radius: 50%;
@@ -338,14 +344,14 @@ span.navbar-text {
 .navbar-text button {
   font-weight: 700;
   color: #fff;
-  border: 1px solid #fff;
-  padding: 18px 34px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 12px 24px;
   font-size: 18px;
-  margin-left: 18px;
+  margin-left: 0;
   position: relative;
-  background-color: transparent;
+  background-color: rgba(217, 217, 217, 0.1);
   transition: 0.3s ease-in-out;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 .navbar-text button span {
@@ -362,7 +368,7 @@ span.navbar-text {
   top: 0;
   z-index: -1;
   transition: 0.3s ease-in-out;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 .navbar-text button:hover {
@@ -493,8 +499,132 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   margin-left: 25px;
 }
 
+/* Main Banner Height Fix */
+.banner {
+  margin-top: 0;
+  padding: 0 !important;
+  min-height: 100vh;
+  position: relative;
+  background-color: #121212;
+}
+
 .banner img {
-  animation: updown 3s linear infinite;
+  display: none;
+}
+
+/* Banner Content Layout */
+.banner .banner-content {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  text-align: center;
+  padding-bottom: 120px;
+  pointer-events: none;
+}
+
+.banner .banner-donut {
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(1000px, 80vw, 80vh);
+  height: min(1000px, 80vw, 80vh);
+  z-index: 5;
+  pointer-events: auto;
+}
+
+.banner .banner-donut canvas {
+  touch-action: none;
+}
+
+.banner .banner-content a,
+.banner .banner-content button {
+  pointer-events: auto;
+}
+
+/* New Hero Styles */
+span.nipun-bg-text {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  text-align: center;
+  font-size: 34vw;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.9) !important;
+  z-index: 2;
+  /* Above mountain base */
+  pointer-events: none;
+  white-space: nowrap;
+  font-family: "articulat-cf", sans-serif;
+  text-transform: uppercase;
+  /* Removed mix-blend-mode to ensure visibility */
+  line-height: 0.8;
+  letter-spacing: -0.02em;
+}
+
+.system-boot-text {
+  position: absolute;
+  bottom: 20%;
+  left: 5%;
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
+  color: #F3C646;
+  text-align: left;
+  z-index: 7;
+  /* Above everything */
+  margin: 0;
+  display: block;
+  opacity: 1;
+}
+
+.mountain-layer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* SVG has aspect ratio built in */
+  background-size: cover;
+  background-position: center bottom;
+  z-index: 0;
+  /* Behind Text (Safe for opaque SVGs) */
+  pointer-events: none;
+  filter: none;
+  /* No filter needed for SVG */
+  /* No mask needed as SVG is transparent at top */
+  opacity: 0.7;
+  /* User requested reduced opacity for SVG */
+}
+
+.cursor {
+  display: inline-block;
+  background-color: #F3C646;
+  /* Blinking cursor color */
+  width: 10px;
+  /* Smaller width */
+  height: 20px;
+  /* Smaller height */
+  margin-left: 5px;
+  animation: blink 1s step-end infinite;
+  vertical-align: sub;
+  /* Align better with text */
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
 }
 
 @keyframes updown {
@@ -517,7 +647,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 /************ Skills Css ************/
 .skill {
-  padding: 0 0 50px 0;
+  padding: 140px 0 50px 0;
   position: relative;
 }
 
@@ -526,7 +656,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   border-radius: 64px;
   text-align: center;
   padding: 60px 50px;
-  margin-top: -60px;
+  margin-top: 0;
 }
 
 .skill h2 {
@@ -816,7 +946,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   padding: 14px 48px;
   font-size: 18px;
   margin-top: 25px;
-  border-radius: 0;
+  border-radius: 10px;
   position: relative;
   transition: 0.3s ease-in-out;
 }
@@ -919,7 +1049,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   color: #fff;
   font-weight: 500;
   letter-spacing: 0.5px;
-  border-radius: 18px;
+  border-radius: 10px;
 }
 
 .footer img {
@@ -1069,7 +1199,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   align-items: center;
   justify-content: center;
   padding: 10px 14px;
-  border-radius: 12px;
+  border-radius: 10px;
   text-decoration: none;
   font-weight: 700;
   color: #151515;
