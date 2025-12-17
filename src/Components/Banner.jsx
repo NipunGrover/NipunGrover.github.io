@@ -1,6 +1,3 @@
-import { ArrowRightCircle } from 'react-bootstrap-icons';
-import { Container, Row, Col } from 'react-bootstrap';
-// import {useState, useEffect} from 'react'; // Removed unused hooks
 import mountainsBg from "../assets/images/hero/hero-bg.svg";
 import { Donut } from "./Donut";
 
@@ -24,17 +21,6 @@ export const Banner = () => {
                 {">"} Detecting Full Stack Developer...<br />
                 {">"} User [Nipun] active<span className="cursor">_</span>
             </div>
-
-            <Container className="banner-content">
-                <Row className="align-items-center justify-content-center">
-                    <Col xs={12} md={10} xl={10}>
-                        <a href="#connect" style={{ display: 'inline-block' }}>
-                            <button onClick={() => console.log('connect')}>Let's connect <ArrowRightCircle size={25} />
-                            </button>
-                        </a>
-                    </Col>
-                </Row>
-            </Container>
         </section>
     );
 }

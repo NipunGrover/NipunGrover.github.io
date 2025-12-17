@@ -178,13 +178,14 @@ html {
 }
 
 body {
-  font-weight: 400;
+  font-weight: 600;
   overflow-x: hidden;
   position: relative;
   background-color: #121212 !important;
   color: #fff !important;
-  font-family: "articulat-cf", sans-serif !important;
-  font-weight: 800;
+  font-family: "poster-gothic-atf", sans-serif !important;
+  font-weight: 600;
+  font-style: normal;
   /* Use normal document flow; do not center everything */
   display: block;
   width: auto;
@@ -503,35 +504,24 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 .banner {
   margin-top: 0;
   padding: 0 !important;
+  height: 100vh;
   min-height: 100vh;
   position: relative;
   background-color: #121212;
+  overflow: hidden;
 }
 
 .banner img {
   display: none;
 }
 
-/* Banner Content Layout */
-.banner .banner-content {
-  position: absolute;
-  inset: 0;
-  z-index: 6;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  text-align: center;
-  padding-bottom: 120px;
-  pointer-events: none;
-}
-
 .banner .banner-donut {
   position: absolute;
-  top: 42%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: min(1000px, 80vw, 80vh);
-  height: min(1000px, 80vw, 80vh);
+  /* Keep a full-height canvas so the model never gets clipped */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: 5;
   pointer-events: auto;
 }
@@ -540,27 +530,24 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   touch-action: none;
 }
 
-.banner .banner-content a,
-.banner .banner-content button {
-  pointer-events: auto;
-}
-
 /* New Hero Styles */
 span.nipun-bg-text {
   position: absolute;
-  top: 20%;
+  top: 18%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scaleY(0.6);
+  transform-origin: center;
   width: 100vw;
   text-align: center;
   font-size: 34vw;
-  font-weight: 900;
+  font-weight: 600;
   color: rgba(255, 255, 255, 0.9) !important;
   z-index: 2;
   /* Above mountain base */
   pointer-events: none;
   white-space: nowrap;
-  font-family: "articulat-cf", sans-serif;
+  font-family: "poster-gothic-atf", sans-serif;
+  font-style: normal;
   text-transform: uppercase;
   /* Removed mix-blend-mode to ensure visibility */
   line-height: 0.8;
@@ -584,10 +571,10 @@ span.nipun-bg-text {
 
 .mountain-layer {
   position: absolute;
-  bottom: 0;
+  top: -8%;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 108%;
   /* SVG has aspect ratio built in */
   background-size: cover;
   background-position: center bottom;
