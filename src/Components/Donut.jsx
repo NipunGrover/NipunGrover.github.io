@@ -32,7 +32,7 @@ export const Donut = () => {
                 />
                 <Suspense fallback={null}>
                     <Float speed={2.6} rotationIntensity={0} floatIntensity={0.9}>
-                        <Model scale={5.1} position={[0, -1.85, 0]} rotation={[0.2, Math.PI, 0]} />
+                        <Model scale={4.08} position={[0, -1.70, 0]} rotation={[0.2, Math.PI, 0]} />
                     </Float>
                     {/* Sunset environment - reduced intensity */}
                     <Environment preset="sunset" environmentIntensity={0.4} />
