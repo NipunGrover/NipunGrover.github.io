@@ -1,24 +1,23 @@
 /************ Custom Font ************/
 @font-face {
   font-family: Centra;
-  src: url('./assets/font/CentraNo2-Bold.ttf');
+  src: url("./assets/font/CentraNo2-Bold.ttf");
   font-weight: 700;
 }
 
 @font-face {
   font-family: Centra;
-  src: url('./assets/font/CentraNo2-Medium.ttf');
+  src: url("./assets/font/CentraNo2-Medium.ttf");
   font-weight: 500;
 }
 
 @font-face {
   font-family: Centra;
-  src: url('./assets/font/CentraNo2-Book.ttf');
+  src: url("./assets/font/CentraNo2-Book.ttf");
   font-weight: 400;
 }
 
 @media (max-width: 576px) {
-
   /* Layout helpers */
   .align-items-center {
     flex-direction: column;
@@ -164,7 +163,6 @@
   }
 }
 
-
 /************ Default Css ************/
 * {
   margin: 0;
@@ -190,9 +188,6 @@ body {
   display: block;
   width: auto;
 }
-
-
-
 
 h1,
 h2,
@@ -236,7 +231,7 @@ select:focus {
   outline: none;
 }
 
-@media (min-width:1700px) {
+@media (min-width: 1700px) {
   main .container {
     max-width: 100%;
     padding: 0 150px;
@@ -339,7 +334,8 @@ span.navbar-text {
 }
 
 .social-icon a:hover img {
-  filter: brightness(0) saturate(100%) invert(0%) sepia(7%) saturate(98%) hue-rotate(346deg) brightness(95%) contrast(86%);
+  filter: brightness(0) saturate(100%) invert(0%) sepia(7%) saturate(98%)
+    hue-rotate(346deg) brightness(95%) contrast(86%);
 }
 
 .navbar-text button {
@@ -411,7 +407,7 @@ nav.navbar .navbar-toggler-icon:before {
   background-color: #fff;
   top: 0;
   left: 0;
-  content: '';
+  content: "";
   z-index: 2;
   transition: all 300ms linear;
 }
@@ -440,7 +436,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 .banner {
   margin-top: 0;
   padding: 150px 0 100px 0;
-  background-image: url('./assets/img/banner-bg.png');
+  background-image: url("./assets/img/banner-bg.png");
   background-position: top center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -450,7 +446,11 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   font-weight: 700;
   letter-spacing: 0.8px;
   padding: 8px 10px;
-  background: linear-gradient(90.21deg, rgba(243, 198, 70, 0.5) -5.91%, rgba(254, 95, 74, 0.5) 111.58%);
+  background: linear-gradient(
+    90.21deg,
+    rgba(243, 198, 70, 0.5) -5.91%,
+    rgba(254, 95, 74, 0.5) 111.58%
+  );
   border: 1px solid rgba(255, 255, 255, 0.5);
   font-size: 20px;
   margin-bottom: 16px;
@@ -472,7 +472,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 .banner p {
-  color: #B8B8B8;
+  color: #b8b8b8;
   font-size: 18px;
   letter-spacing: 0.8px;
   line-height: 1.5em;
@@ -506,6 +506,10 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   padding: 0 !important;
   height: 100vh;
   min-height: 100vh;
+  height: 100svh;
+  min-height: 100svh;
+  height: 100dvh;
+  min-height: 100dvh;
   position: relative;
   background-color: #121212;
   overflow: hidden;
@@ -517,13 +521,13 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 .banner .banner-donut {
   position: absolute;
-  /* Keep a full-height canvas so the model never gets clipped */
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 5;
-  pointer-events: auto;
+  pointer-events: none;
+  overflow: visible;
 }
 
 .banner .banner-donut canvas {
@@ -558,9 +562,9 @@ span.nipun-bg-text {
   position: absolute;
   bottom: 20%;
   left: 5%;
-  font-family: 'Courier New', monospace;
+  font-family: "Courier New", monospace;
   font-size: 16px;
-  color: #F3C646;
+  color: #f3c646;
   text-align: left;
   z-index: 7;
   /* Above everything */
@@ -590,7 +594,7 @@ span.nipun-bg-text {
 
 .cursor {
   display: inline-block;
-  background-color: #F3C646;
+  background-color: #f3c646;
   /* Blinking cursor color */
   width: 10px;
   /* Smaller width */
@@ -607,6 +611,7 @@ span.nipun-bg-text {
   display: none;
   position: absolute;
   bottom: 20px;
+  bottom: calc(20px + env(safe-area-inset-bottom, 0px));
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
@@ -625,15 +630,11 @@ span.nipun-bg-text {
   color: rgba(255, 255, 255, 0.85);
 }
 
-
-
 .scroll-down-btn svg {
   animation: bounce 2s infinite;
 }
 
-
 @keyframes bounce {
-
   0%,
   20%,
   50%,
@@ -651,9 +652,7 @@ span.nipun-bg-text {
   }
 }
 
-
 @keyframes blink {
-
   0%,
   100% {
     opacity: 1;
@@ -698,7 +697,6 @@ span.nipun-bg-text {
   opacity: 0.8;
 }
 
-
 .skill-bx {
   background: #151515;
   border-radius: 64px;
@@ -713,7 +711,7 @@ span.nipun-bg-text {
 }
 
 .skill p {
-  color: #B8B8B8;
+  color: #b8b8b8;
   font-size: 18px;
   letter-spacing: 0.8px;
   line-height: 1.5em;
@@ -746,8 +744,6 @@ span.nipun-bg-text {
   background-color: black;
   border-radius: 40px;
   width: 100vw;
-
-
 }
 
 .project h2 {
@@ -757,7 +753,7 @@ span.nipun-bg-text {
 }
 
 .project p {
-  color: #B8B8B8;
+  color: #b8b8b8;
   font-size: 18px;
   letter-spacing: 0.8px;
   line-height: 1.5em;
@@ -798,7 +794,7 @@ span.nipun-bg-text {
   position: absolute;
   width: 0;
   height: 100%;
-  background: linear-gradient(90.21deg, #F3C646 -5.91%, #FE5F4A 111.58%);
+  background: linear-gradient(90.21deg, #f3c646 -5.91%, #fe5f4a 111.58%);
   top: 0;
   left: 0;
   z-index: -1;
@@ -808,7 +804,6 @@ span.nipun-bg-text {
 .project .nav.nav-pills .nav-link.active::before {
   width: 100% !important;
   border: 1.75px solid #fff;
-
 }
 
 #projects-tabs-tab-first .nav-link.active::before {
@@ -846,7 +841,7 @@ span.nipun-bg-text {
 
 .proj-imgbox::before {
   content: "";
-  background: linear-gradient(90.21deg, #F3C646 -5.91%, #FE5F4A 111.58%);
+  background: linear-gradient(90.21deg, #f3c646 -5.91%, #fe5f4a 111.58%);
   opacity: 0.85;
   position: absolute;
   width: 100%;
@@ -867,7 +862,6 @@ span.nipun-bg-text {
   padding-top: 45px;
 }
 
-
 .proj-imgbox:hover .proj-txtx {
   top: 55%;
   opacity: 1;
@@ -876,7 +870,6 @@ span.nipun-bg-text {
 .proj-imgbox:hover img {
   top: 50%;
   opacity: 0.1;
-
 }
 
 .proj-card-button {
@@ -939,8 +932,7 @@ span.nipun-bg-text {
 
 /************ Projects Css ************/
 .contact {
-  background: linear-gradient(90.21deg, #F3C646 -5.91%, #FE5F4A 111.58%);
-
+  background: linear-gradient(90.21deg, #f3c646 -5.91%, #fe5f4a 111.58%);
 }
 
 .contact img {
@@ -1027,14 +1019,14 @@ span.nipun-bg-text {
 /************ Footer Css ************/
 .footer {
   padding: 0 0 50px 0;
-  background-image: url('./assets/images/footer-bg.png');
+  background-image: url("./assets/images/footer-bg.png");
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 .newsletter-bx {
-  background: #FFFFFF;
+  background: #ffffff;
   border-radius: 55px;
   color: #121212;
   padding: 85px 125px;
@@ -1060,7 +1052,7 @@ span.nipun-bg-text {
 
 .new-email-bx::before {
   content: "";
-  background: linear-gradient(90.21deg, #F3C646 -5.91%, #FE5F4A 111.58%);
+  background: linear-gradient(90.21deg, #f3c646 -5.91%, #fe5f4a 111.58%);
   border-radius: 20px;
   position: absolute;
   z-index: -1;
@@ -1092,7 +1084,7 @@ span.nipun-bg-text {
 }
 
 .new-email-bx button {
-  background: linear-gradient(90.21deg, #F3C646 -5.91%, #FE5F4A 111.58%);
+  background: linear-gradient(90.21deg, #f3c646 -5.91%, #fe5f4a 111.58%);
   padding: 20px 65px;
   color: #fff;
   font-weight: 500;
@@ -1107,13 +1099,11 @@ span.nipun-bg-text {
 .footer p {
   font-weight: 400;
   font-size: 14px;
-  color: #B8B8B8;
+  color: #b8b8b8;
   letter-spacing: 0.5px;
   margin-top: 20px;
   text-align: center;
 }
-
-
 
 /************ Misc ************/
 
@@ -1125,7 +1115,6 @@ span.nipun-bg-text {
 .white-logo {
   filter: brightness(0) invert(1);
 }
-
 
 /*this css is to set align the text with the logos in the skills section carousel*/
 .item {
@@ -1164,7 +1153,7 @@ span.nipun-bg-text {
   align-items: center;
   justify-content: space-between;
   padding: 14px 18px;
-  background: linear-gradient(90.21deg, #F3C646 -5.91%, #FE5F4A 111.58%);
+  background: linear-gradient(90.21deg, #f3c646 -5.91%, #fe5f4a 111.58%);
 }
 
 .project-modal__topbar-title {
@@ -1189,9 +1178,12 @@ span.nipun-bg-text {
 
 .project-modal__body {
   padding: 26px;
-  color: #E8EDF2;
-  background:
-    radial-gradient(1100px circle at 0% 0%, rgba(255, 255, 255, 0.06), transparent 45%),
+  color: #e8edf2;
+  background: radial-gradient(
+      1100px circle at 0% 0%,
+      rgba(255, 255, 255, 0.06),
+      transparent 45%
+    ),
     #1f2a35;
 }
 
@@ -1251,7 +1243,7 @@ span.nipun-bg-text {
   text-decoration: none;
   font-weight: 700;
   color: #151515;
-  background: linear-gradient(90.21deg, #F3C646 -5.91%, #FE5F4A 111.58%);
+  background: linear-gradient(90.21deg, #f3c646 -5.91%, #fe5f4a 111.58%);
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
@@ -1312,7 +1304,6 @@ span.nipun-bg-text {
   }
 }
 
-
 /************ Project readme 1 ************/
 
 .interface-image {
@@ -1320,7 +1311,6 @@ span.nipun-bg-text {
   /* or any size you want */
   height: auto;
   /* maintain aspect ratio */
-
 }
 
 .proj1 h2 {
@@ -1421,7 +1411,8 @@ span.nipun-bg-text {
 .project-modal.modal.fade .modal-dialog {
   transform: scale(0.9);
   opacity: 0;
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease-in-out;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    opacity 0.4s ease-in-out;
 }
 
 .project-modal.modal.show .modal-dialog {
@@ -1440,7 +1431,11 @@ span.nipun-bg-text {
 
 /* Modal Button */
 .modal-visit-btn {
-  background: linear-gradient(90.21deg, #F3C646 -5.91%, #FE5F4A 111.58%) !important;
+  background: linear-gradient(
+    90.21deg,
+    #f3c646 -5.91%,
+    #fe5f4a 111.58%
+  ) !important;
   border: none !important;
   padding: 12px 30px !important;
   font-weight: 700 !important;
@@ -1511,15 +1506,13 @@ span.nipun-bg-text {
     text-align: center;
   }
 
-  .banner .banner-donut {
-    top: 30%;
-    left: 10%;
-    right: 10%;
-    bottom: 20%;
-  }
-
   .scroll-down-btn {
     display: flex;
+  }
+
+  /* Prevent the full-screen canvas from capturing touches on mobile */
+  .banner .banner-donut canvas {
+    pointer-events: none;
   }
 }
 
@@ -1536,13 +1529,6 @@ span.nipun-bg-text {
     text-align: center;
     font-size: 14px;
   }
-
-  .banner .banner-donut {
-    top: 28%;
-    left: 8%;
-    right: 8%;
-    bottom: 18%;
-  }
 }
 
 /* Mobile phones */
@@ -1555,13 +1541,6 @@ span.nipun-bg-text {
     bottom: 5%;
     font-size: 12px;
   }
-
-  .banner .banner-donut {
-    top: 25%;
-    left: 5%;
-    right: 5%;
-    bottom: 15%;
-  }
 }
 
 /* Very small phones */
@@ -1573,12 +1552,5 @@ span.nipun-bg-text {
   .system-boot-text {
     bottom: 4%;
     font-size: 11px;
-  }
-
-  .banner .banner-donut {
-    top: 22%;
-    left: 3%;
-    right: 3%;
-    bottom: 12%;
   }
 }
