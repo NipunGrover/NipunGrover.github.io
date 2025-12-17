@@ -534,6 +534,15 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   touch-action: none;
 }
 
+// This property handles touch scrolling conflicts
+// Three js by default uses Orbital controls and they set touch-action to 'none'
+// We override it here to allow vertical scrolling while still allowing horizontal touch interactions for rotation
+// pan-y tells the browser to allow vertical panning (scrolling) but not horizontal panning i.e. this is what handles
+// vertical swipes as orbital control inherently does not have a different horizontal or veritical swipe setting
+.donut-interaction-region {
+  touch-action: pan-y !important;
+}
+
 /* New Hero Styles */
 span.nipun-bg-text {
   position: absolute;

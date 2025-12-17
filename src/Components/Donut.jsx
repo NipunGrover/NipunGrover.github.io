@@ -133,6 +133,7 @@ export const Donut = () => {
             {isMobile && (
                 <div
                     ref={interactionRegionRef}
+                    className="donut-interaction-region"
                     aria-hidden="true"
                     style={{
                         position: 'absolute',
