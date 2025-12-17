@@ -1416,3 +1416,76 @@ span.nipun-bg-text {
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 20px;
 }
+
+/************ Responsive Breakpoints ************/
+
+/* Tablets and smaller laptops (below 1080p / 1920px) */
+@media (max-width: 1199px) {
+  span.nipun-bg-text {
+    top: 16%;
+  }
+}
+
+/* Tablets (portrait and landscape) */
+@media (max-width: 991px) {
+  span.nipun-bg-text {
+    top: 14%;
+  }
+
+  .system-boot-text {
+    bottom: 12%;
+  }
+}
+
+/* iPad Air / Tablets portrait (~820px) */
+@media (max-width: 850px) {
+  span.nipun-bg-text {
+    top: 10%;
+  }
+
+  .system-boot-text {
+    bottom: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+}
+
+/* Large phones / small tablets */
+@media (max-width: 767px) {
+  span.nipun-bg-text {
+    top: 8%;
+  }
+
+  .system-boot-text {
+    bottom: 6%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 14px;
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 575px) {
+  span.nipun-bg-text {
+    top: 6%;
+  }
+
+  .system-boot-text {
+    bottom: 5%;
+    font-size: 12px;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 400px) {
+  span.nipun-bg-text {
+    top: 5%;
+  }
+
+  .system-boot-text {
+    bottom: 4%;
+    font-size: 11px;
+  }
+}
