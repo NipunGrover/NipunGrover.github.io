@@ -77,6 +77,9 @@ export const Skills = () => {
     return (
         <section className="skill" id="skills">
             <Container>
+                <p className="donut-subtext">
+                    In case you're wondering why there's a donut — I just don't have a tech-related good-looking 3D asset that I created, and I wanted to flex Three.js.
+                </p>
                 <div className="row">
                     <div className="col-12">
                         <div className="skill-bx wow zoomIn">
