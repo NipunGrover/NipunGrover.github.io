@@ -4,6 +4,7 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  assetsInclude: ['**/*.glb'],
   server: {
     proxy: {
       // Use "/contact" as the key if you only want to proxy requests for "/contact"
