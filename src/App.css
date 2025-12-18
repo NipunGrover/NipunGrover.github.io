@@ -537,11 +537,12 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   touch-action: none;
 }
 
-// This property handles touch scrolling conflicts
-// Three js by default uses Orbital controls and they set touch-action to 'none'
-// We override it here to allow vertical scrolling while still allowing horizontal touch interactions for rotation
-// pan-y tells the browser to allow vertical panning (scrolling) but not horizontal panning i.e. this is what handles
-// vertical swipes as orbital control inherently does not have a different horizontal or veritical swipe setting
+/* 
+ * This property handles touch scrolling conflicts.
+ * Three.js by default uses Orbital controls and they set touch-action to 'none'.
+ * We override it here to allow vertical scrolling while still allowing horizontal touch interactions for rotation.
+ * pan-y tells the browser to allow vertical panning (scrolling) but not horizontal panning.
+ */
 .donut-interaction-region {
   touch-action: pan-y !important;
 }
@@ -572,14 +573,15 @@ span.nipun-bg-text {
 
 .system-boot-text {
   position: absolute;
-  bottom: 20%;
+  /* Use viewport height for fluid positioning - stays above scroll button */
+  bottom: max(18vh, 120px);
   left: 5%;
   font-family: "Courier New", monospace;
-  font-size: 16px;
+  /* Fluid font size: min 11px, scales with viewport, max 16px */
+  font-size: clamp(11px, 2vw, 16px);
   color: #f3c646;
   text-align: left;
   z-index: 7;
-  /* Above everything */
   margin: 0;
   display: block;
   opacity: 1;
@@ -1485,32 +1487,14 @@ span.nipun-bg-text {
 
 /************ Responsive Breakpoints ************/
 
-/* Tablets and smaller laptops (below 1080p / 1920px) */
-@media (max-width: 1199px) {
-  span.nipun-bg-text {
-    top: 16%;
-  }
+/* Desktop - NIPUN text positioning scales with viewport */
+span.nipun-bg-text {
+  top: clamp(5%, 12vw, 18%);
 }
 
-/* Tablets (portrait and landscape) */
-@media (max-width: 991px) {
-  span.nipun-bg-text {
-    top: 14%;
-  }
-
-  .system-boot-text {
-    bottom: 12%;
-  }
-}
-
-/* iPad Air / Tablets portrait (~820px) */
+/* Mobile breakpoint - only layout change needed (left → center) */
 @media (max-width: 850px) {
-  span.nipun-bg-text {
-    top: 10%;
-  }
-
   .system-boot-text {
-    bottom: 14%;
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
@@ -1523,44 +1507,5 @@ span.nipun-bg-text {
   /* Prevent the full-screen canvas from capturing touches on mobile */
   .banner .banner-donut canvas {
     pointer-events: none;
-  }
-}
-
-/* Large phones / small tablets */
-@media (max-width: 767px) {
-  span.nipun-bg-text {
-    top: 8%;
-  }
-
-  .system-boot-text {
-    bottom: 16%;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    font-size: 14px;
-  }
-}
-
-/* Mobile phones */
-@media (max-width: 575px) {
-  span.nipun-bg-text {
-    top: 6%;
-  }
-
-  .system-boot-text {
-    bottom: 18%;
-    font-size: 12px;
-  }
-}
-
-/* Very small phones */
-@media (max-width: 400px) {
-  span.nipun-bg-text {
-    top: 5%;
-  }
-
-  .system-boot-text {
-    bottom: 18%;
-    font-size: 11px;
   }
 }
