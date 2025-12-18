@@ -20,25 +20,23 @@ export const Donut = () => {
             const width = window.innerWidth;
             setIsMobile(width <= 850);
 
-            if (width >= 1920) {
-                setScale(4.08);
-                setPositionY(-1.70);
-            } else if (width >= 1200) {
-                setScale(3.8);
-                setPositionY(-1.5);
-            } else if (width >= 992) {
-                setScale(3.2);
-                setPositionY(-1.2);
-            } else if (width >= 768) {
-                setScale(2.8);
-                setPositionY(-0.8);
-            } else if (width >= 576) {
-                setScale(2.4);
-                setPositionY(-0.5);
-            } else {
-                setScale(2.0);
-                setPositionY(-0.3);
-            }
+            // Fluid scaling based on viewport width
+            // Scale linearly from 2.0 at 320px to 4.08 at 1920px, capped at 4.08
+            const minWidth = 320;
+            const maxWidth = 1920;
+            const minScale = 2.0;
+            const maxScale = 4.08;
+
+            const clampedWidth = Math.min(Math.max(width, minWidth), maxWidth);
+            const ratio = (clampedWidth - minWidth) / (maxWidth - minWidth);
+            const newScale = minScale + ratio * (maxScale - minScale);
+            setScale(newScale);
+
+            // Fluid Y position: from -0.3 at small screens to -1.7 at large
+            const minPosY = -0.3;
+            const maxPosY = -1.7;
+            const newPosY = minPosY + ratio * (maxPosY - minPosY);
+            setPositionY(newPosY);
         };
 
         handleResize();

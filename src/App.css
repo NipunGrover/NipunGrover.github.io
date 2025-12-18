@@ -516,6 +516,10 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   position: relative;
   background-color: #121212;
   overflow: hidden;
+  /* Cap banner width and center on ultra-wide displays */
+  max-width: 1920px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .banner img {
@@ -554,19 +558,19 @@ span.nipun-bg-text {
   left: 50%;
   transform: translate(-50%, -50%) scaleY(0.6);
   transform-origin: center;
-  width: 100vw;
+  /* Use % instead of vw to scale relative to banner container */
+  width: 100%;
   text-align: center;
-  font-size: 34vw;
+  /* Use container-relative sizing: 34% of 1920px = ~653px max */
+  font-size: min(34vw, 653px);
   font-weight: 600;
   color: rgba(255, 255, 255, 0.9) !important;
   z-index: 2;
-  /* Above mountain base */
   pointer-events: none;
   white-space: nowrap;
   font-family: "poster-gothic-atf", sans-serif;
   font-style: normal;
   text-transform: uppercase;
-  /* Removed mix-blend-mode to ensure visibility */
   line-height: 0.8;
   letter-spacing: -0.02em;
 }
@@ -1486,11 +1490,6 @@ span.nipun-bg-text {
 }
 
 /************ Responsive Breakpoints ************/
-
-/* Desktop - NIPUN text positioning scales with viewport */
-span.nipun-bg-text {
-  top: clamp(5%, 12vw, 18%);
-}
 
 /* Mobile breakpoint - only layout change needed (left → center) */
 @media (max-width: 850px) {
