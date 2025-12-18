@@ -18,6 +18,7 @@
 }
 
 @media (max-width: 576px) {
+
   /* Layout helpers */
   .align-items-center {
     flex-direction: column;
@@ -160,6 +161,11 @@
   /* Footer */
   .footer img {
     width: 44%;
+  }
+
+  /* Move system boot text higher to avoid overlap with scroll button */
+  .system-boot-text {
+    bottom: 30%;
   }
 }
 
@@ -334,8 +340,7 @@ span.navbar-text {
 }
 
 .social-icon a:hover img {
-  filter: brightness(0) saturate(100%) invert(0%) sepia(7%) saturate(98%)
-    hue-rotate(346deg) brightness(95%) contrast(86%);
+  filter: brightness(0) saturate(100%) invert(0%) sepia(7%) saturate(98%) hue-rotate(346deg) brightness(95%) contrast(86%);
 }
 
 .navbar-text button {
@@ -446,11 +451,9 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   font-weight: 700;
   letter-spacing: 0.8px;
   padding: 8px 10px;
-  background: linear-gradient(
-    90.21deg,
-    rgba(243, 198, 70, 0.5) -5.91%,
-    rgba(254, 95, 74, 0.5) 111.58%
-  );
+  background: linear-gradient(90.21deg,
+      rgba(243, 198, 70, 0.5) -5.91%,
+      rgba(254, 95, 74, 0.5) 111.58%);
   border: 1px solid rgba(255, 255, 255, 0.5);
   font-size: 20px;
   margin-bottom: 16px;
@@ -644,6 +647,7 @@ span.nipun-bg-text {
 }
 
 @keyframes bounce {
+
   0%,
   20%,
   50%,
@@ -662,6 +666,7 @@ span.nipun-bg-text {
 }
 
 @keyframes blink {
+
   0%,
   100% {
     opacity: 1;
@@ -1188,11 +1193,9 @@ span.nipun-bg-text {
 .project-modal__body {
   padding: 26px;
   color: #e8edf2;
-  background: radial-gradient(
-      1100px circle at 0% 0%,
+  background: radial-gradient(1100px circle at 0% 0%,
       rgba(255, 255, 255, 0.06),
-      transparent 45%
-    ),
+      transparent 45%),
     #1f2a35;
 }
 
@@ -1440,11 +1443,9 @@ span.nipun-bg-text {
 
 /* Modal Button */
 .modal-visit-btn {
-  background: linear-gradient(
-    90.21deg,
-    #f3c646 -5.91%,
-    #fe5f4a 111.58%
-  ) !important;
+  background: linear-gradient(90.21deg,
+      #f3c646 -5.91%,
+      #fe5f4a 111.58%) !important;
   border: none !important;
   padding: 12px 30px !important;
   font-weight: 700 !important;
@@ -1509,7 +1510,7 @@ span.nipun-bg-text {
   }
 
   .system-boot-text {
-    bottom: 8%;
+    bottom: 14%;
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
@@ -1532,7 +1533,7 @@ span.nipun-bg-text {
   }
 
   .system-boot-text {
-    bottom: 6%;
+    bottom: 16%;
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
@@ -1547,7 +1548,7 @@ span.nipun-bg-text {
   }
 
   .system-boot-text {
-    bottom: 5%;
+    bottom: 18%;
     font-size: 12px;
   }
 }
@@ -1559,7 +1560,7 @@ span.nipun-bg-text {
   }
 
   .system-boot-text {
-    bottom: 4%;
+    bottom: 18%;
     font-size: 11px;
   }
 }
