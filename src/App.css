@@ -139,6 +139,7 @@
     border-radius: 20px;
   }
 
+
   /* Contact */
   .contact h2 {
     font-size: 32px;
@@ -166,6 +167,82 @@
   /* Move system boot text higher to avoid overlap with scroll button */
   .system-boot-text {
     bottom: 30%;
+  }
+}
+
+/************ Project Modal Styles ************/
+.project-modal-content {
+  line-height: 1.6;
+  letter-spacing: 0.5px;
+}
+
+.project-modal-content h2 {
+  font-size: 28px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 30px;
+  font-family: "poster-gothic-atf", sans-serif !important;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.project-modal-content h3 {
+  font-size: 20px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #fff;
+  margin-top: 40px;
+  margin-bottom: 25px;
+  font-family: "poster-gothic-atf", sans-serif !important;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.project-modal-content .project-description {
+  font-size: 16px;
+  color: #d1d1d1;
+  line-height: 1.8;
+  margin-bottom: 40px;
+  font-family: "xenera", sans-serif !important;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.project-modal-content ul {
+  padding-left: 20px;
+}
+
+.project-modal-content li {
+  font-size: 15px;
+  color: #d1d1d1;
+  line-height: 1.7;
+  margin-bottom: 18px;
+  font-family: "xenera", sans-serif !important;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.project-modal-content .modal-left-col {
+  padding-right: 48px;
+}
+
+.project-modal-content .modal-right-col {
+  padding-left: 24px;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 991px) {
+  .project-modal-content .modal-left-col {
+    padding-right: 15px;
+    margin-bottom: 40px;
+  }
+
+  .project-modal-content .modal-right-col {
+    padding-left: 15px;
+    border-left: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 40px;
   }
 }
 
@@ -845,8 +922,8 @@ span.nipun-bg-text {
   border: 1px solid rgba(255, 255, 255, 0.3);
   padding: 16px 40px;
   font-size: 14px;
-  font-weight: 600;
-  border-radius: 50px;
+  font-weight: 700;
+  border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s ease;
   letter-spacing: 2px;
@@ -854,11 +931,8 @@ span.nipun-bg-text {
 }
 
 .view-all-btn:hover {
-  background: #f3c646;
-  color: #121212;
-  border-color: #f3c646;
-  box-shadow: 0 0 20px rgba(243, 198, 70, 0.3);
-  transform: translateY(-2px);
+  background: #311a38;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* Responsive */

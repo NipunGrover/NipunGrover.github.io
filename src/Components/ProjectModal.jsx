@@ -12,6 +12,7 @@ export const ProjectModal = ({ show, onHide, project }) => {
       aria-labelledby="contained-modal-title-vcenter"
       centered
       className="project-modal"
+      contentClassName="project-modal-content"
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
