@@ -1,5 +1,5 @@
-import React from 'react';
-import { Modal, Button, Row, Col } from 'react-bootstrap';
+import React from "react";
+import { Modal, Button, Row, Col } from "react-bootstrap";
 
 export const ProjectModal = ({ show, onHide, project }) => {
   if (!project) return null;
@@ -39,7 +39,13 @@ export const ProjectModal = ({ show, onHide, project }) => {
             )}
             {project.link && (
               <div className="mt-4">
-                <Button variant="primary" href={project.link} target="_blank" rel="noopener noreferrer" className="modal-visit-btn">
+                <Button
+                  variant="primary"
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="modal-visit-btn"
+                >
                   View Project
                 </Button>
               </div>
@@ -50,11 +56,22 @@ export const ProjectModal = ({ show, onHide, project }) => {
             {project.screenshots && project.screenshots.length > 0 ? (
               <div className="screenshots-grid-stack">
                 {project.screenshots.map((img, idx) => (
-                  <img key={idx} src={img} alt={`${project.title} screenshot ${idx + 1}`} className="img-fluid mb-3" />
+                  <img
+                    key={idx}
+                    src={img}
+                    alt={`${project.title} screenshot ${idx + 1}`}
+                    className="img-fluid mb-3"
+                  />
                 ))}
               </div>
             ) : (
-              project.imgUrl && <img src={project.imgUrl} alt={project.title} className="img-fluid" />
+              project.imgUrl && (
+                <img
+                  src={project.imgUrl}
+                  alt={project.title}
+                  className="img-fluid"
+                />
+              )
             )}
           </Col>
         </Row>
