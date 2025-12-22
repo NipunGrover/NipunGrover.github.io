@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "checkJs": false,
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "gsap/Flip": ["node_modules/gsap/types/flip.d.ts"]
+    }
+  },
+  "include": ["src"]
+}
