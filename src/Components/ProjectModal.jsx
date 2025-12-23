@@ -1,4 +1,3 @@
-import React from "react";
 import { Modal, Button, Row, Col } from "react-bootstrap";
 
 export const ProjectModal = ({ show, onHide, project }) => {

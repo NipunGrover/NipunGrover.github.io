@@ -12,6 +12,7 @@ import gsap from "gsap";
 import { Flip } from "gsap/Flip";
 import { useRef, useState } from "react";
 import { flushSync } from "react-dom";
+import { SkillsModal } from "./SkillsModal";
 
 gsap.registerPlugin(Flip);
 
@@ -29,6 +30,7 @@ const skills = [
 export const Skills = () => {
   const [skillsOrder, setSkillsOrder] = useState(skills);
   const [selectedIndex, setSelectedIndex] = useState(null);
+  const [showModal, setShowModal] = useState(false);
 
   const gridRef = useRef(null);
   const isFlippingRef = useRef(false);
@@ -110,9 +112,8 @@ export const Skills = () => {
             <div
               key={skill.name}
               data-flip-id={skill.name}
-              className={`skill-item ${
-                selectedIndex === index ? "selected" : ""
-              }`}
+              className={`skill-item ${selectedIndex === index ? "selected" : ""
+                }`}
               onClick={() => handleSkillClick(index)}
             >
               <div className="skill-icon">
@@ -127,8 +128,11 @@ export const Skills = () => {
           ))}
         </div>
 
-        <button className="view-all-btn">View Full Stack</button>
+        <button className="view-all-btn" onClick={() => setShowModal(true)}>
+          View Full Stack
+        </button>
       </Container>
+      <SkillsModal show={showModal} onHide={() => setShowModal(false)} />
     </section>
   );
 };
