@@ -1277,6 +1277,8 @@ span.nipun-bg-text {
   border-radius: 10px;
   position: relative;
   transition: 0.3s ease-in-out;
+  overflow: hidden;
+  border: 1px solid #fff;
 }
 
 .contact form button span {
@@ -1286,11 +1288,12 @@ span.nipun-bg-text {
 
 .contact form button:hover {
   color: #fff;
+  border: 2px solid #fff;
 }
 
 .contact form button::before {
   content: "";
-  background: #121212;
+  background: linear-gradient(90.21deg, #f3c646 -5.91%, #fe5f4a 111.58%);
   width: 0;
   height: 100%;
   position: absolute;
@@ -1298,6 +1301,7 @@ span.nipun-bg-text {
   left: 0;
   z-index: 0;
   transition: 0.3s ease-in-out;
+  border-radius: 10px;
 }
 
 .contact form button:hover::before {
@@ -1917,6 +1921,30 @@ span.nipun-bg-text {
   margin: 0 auto;
 }
 
+/* New Text-Based Skill Categories */
+.skill-category-row {
+  margin-bottom: 28px;
+}
+
+.skill-category-title {
+  font-size: 13px;
+  color: #f3c646;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-family: "poster-gothic-atf", sans-serif;
+}
+
+.skill-category-list {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
+  margin: 0;
+  font-family: "xenera", sans-serif;
+  font-weight: 400;
+}
+
 .premium-category {
   font-size: 14px;
   color: #f3c646;
@@ -1939,7 +1967,7 @@ span.nipun-bg-text {
 }
 
 .skill-modal-item:hover {
-  transform: translateY(-5px) scale(1.05);
+  /* transform: translateY(-5px) scale(1.05); REMOVED per user request */
 }
 
 .skill-modal-icon {
@@ -1960,7 +1988,6 @@ span.nipun-bg-text {
 .skill-modal-item:hover .skill-modal-icon {
   background: rgba(255, 255, 255, 0.08);
   border-color: rgba(243, 198, 70, 0.4);
-  box-shadow: 0 0 20px rgba(243, 198, 70, 0.2);
 }
 
 .skill-placeholder-icon {
@@ -2044,7 +2071,7 @@ span.nipun-bg-text {
 .skills-grid-compact .skill-modal-item:hover {
   background: rgba(255, 255, 255, 0.08);
   border-color: rgba(254, 95, 74, 0.4);
-  transform: translateX(5px);
+  /* transform: translateX(5px); REMOVED */
 }
 
 .skills-grid-compact .skill-modal-icon {
@@ -2103,7 +2130,7 @@ span.nipun-bg-text {
   background: #fff !important;
   border-color: #fff !important;
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
-  transform: translateY(-2px);
+  /* transform: translateY(-2px); REMOVED */
 }
 
 @media (max-width: 768px) {
