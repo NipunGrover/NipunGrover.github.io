@@ -10,7 +10,7 @@ export default defineConfig({
       // Use "/contact" as the key if you only want to proxy requests for "/contact"
       // Use "^/api" to match any path that starts with "/api"
       '/contact': {
-        target: 'https://damp-badlands-16343-6f115056a401.herokuapp.com',
+        target: 'https://nipungrover-github-io.onrender.com',
         changeOrigin: true,
         secure: false,
       },

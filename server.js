@@ -21,11 +21,16 @@ const transporter = nodemailer.createTransport({
   service: 'outlook',
   host: "smtp-mail.outlook.com",
   port: 587,
-  secure: false, // Use `true` for port 465, `false` for all other ports
+  secure: false,
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
   },
+  connectionTimeout: 10000, // 10 seconds to connect
+  greetingTimeout: 10000,   // 10 seconds for greeting
+  socketTimeout: 30000,     // 30 seconds for socket
+  logger: true,             // Enable logging
+  debug: true,              // Enable debug output
 });
 
 app.post('/contact', async (req, res) => {

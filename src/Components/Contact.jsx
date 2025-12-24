@@ -24,24 +24,36 @@ export const Contact = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setButtonText('Sending...');
+
+        // 60 second timeout for Render cold starts
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 60000);
+
         try {
-            let response = await fetch("https://damp-badlands-16343-6f115056a401.herokuapp.com/contact", {
+            let response = await fetch("https://nipungrover-github-io.onrender.com/contact", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json;charset=utf-8",
                 },
                 body: JSON.stringify(formDetails),
+                signal: controller.signal,
             });
+            clearTimeout(timeoutId);
             setButtonText("Send Message");
             let result = await response.json();
-            if (response.code === 200) {
+            if (response.ok) {
                 setStatus({ success: true, message: 'Message sent successfully' });
             } else {
                 setStatus({ success: false, message: 'Something went wrong, please try again later.' });
             }
         } catch (error) {
+            clearTimeout(timeoutId);
             setButtonText("Send Message");
-            setStatus({ success: false, message: 'Something went wrong, please try again later.' });
+            if (error.name === 'AbortError') {
+                setStatus({ success: false, message: 'Request timed out. The server may be waking up - please try again.' });
+            } else {
+                setStatus({ success: false, message: 'Something went wrong, please try again later.' });
+            }
         }
     };
 
