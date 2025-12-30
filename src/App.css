@@ -2392,3 +2392,115 @@ span.nipun-bg-text {
     padding: 12px 15px;
   }
 }
+
+/* Winter theme console styling */
+[data-theme="winter"] .console-modal {
+  border: 1px solid rgba(100, 200, 243, 0.3);
+}
+
+[data-theme="winter"] .console-header {
+  background: linear-gradient(90.21deg, #64c8f3 -5.91%, #4a7efe 111.58%);
+  border-bottom: 1px solid rgba(100, 200, 243, 0.2);
+}
+
+[data-theme="winter"] .console-title {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+[data-theme="winter"] .console-input-area {
+  border-top: 1px solid rgba(100, 200, 243, 0.15);
+}
+
+/* Winter theme project modal styling */
+[data-theme="winter"] .project-modal .modal-header {
+  background: linear-gradient(90.21deg, #64c8f3 -5.91%, #4a7efe 111.58%);
+}
+
+[data-theme="winter"] .project-modal .modal-content {
+  border: 1px solid rgba(100, 200, 243, 0.2);
+}
+
+[data-theme="winter"] .modal-visit-btn {
+  background: linear-gradient(90.21deg, #64c8f3 -5.91%, #4a7efe 111.58%) !important;
+  border: none !important;
+}
+
+/* Winter theme contact section styling */
+[data-theme="winter"] .contact {
+  background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+}
+
+[data-theme="winter"] .contact-info h2 {
+  background: linear-gradient(90.21deg, #64c8f3 -5.91%, #4a7efe 111.58%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[data-theme="winter"] .contact-decoration {
+  background: radial-gradient(circle, rgba(100, 200, 243, 0.1) 0%, transparent 70%);
+}
+
+[data-theme="winter"] .contact form input:focus,
+[data-theme="winter"] .contact form textarea:focus {
+  border-color: #64c8f3;
+  box-shadow: 0 0 15px rgba(100, 200, 243, 0.1);
+}
+
+[data-theme="winter"] .contact form button {
+  background: linear-gradient(90.21deg, #64c8f3 -5.91%, #4a7efe 111.58%);
+}
+
+[data-theme="winter"] .contact form button:hover {
+  box-shadow: 0 10px 20px rgba(100, 200, 243, 0.2);
+}
+
+/* Winter theme skills modal styling */
+[data-theme="winter"] .skills-modal-content.premium-content {
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.5),
+    0 20px 50px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(100, 200, 243, 0.05);
+}
+
+[data-theme="winter"] .modal-hud-line.top-left {
+  border-top-color: #64c8f3;
+  border-left-color: #64c8f3;
+}
+
+[data-theme="winter"] .modal-hud-line.top-right {
+  border-top-color: #64c8f3;
+  border-right-color: #64c8f3;
+}
+
+[data-theme="winter"] .modal-hud-line.bottom-left {
+  border-bottom-color: #4a7efe;
+  border-left-color: #4a7efe;
+}
+
+[data-theme="winter"] .modal-hud-line.bottom-right {
+  border-bottom-color: #4a7efe;
+  border-right-color: #4a7efe;
+}
+
+[data-theme="winter"] .skills-modal-header h2.premium-title {
+  background: linear-gradient(90.21deg, #64c8f3 -5.91%, #4a7efe 111.58%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[data-theme="winter"] .spec-icon {
+  color: #4a7efe;
+  border-color: #4a7efe;
+}
+
+[data-theme="winter"] .exposure-item .dot {
+  background-color: #64c8f3;
+}
+
+[data-theme="winter"] .skills-grid-compact .skill-modal-item:hover {
+  border-color: rgba(74, 126, 254, 0.4);
+}
+
+[data-theme="winter"] .skill-category-title {
+  color: #64c8f3;
+}
