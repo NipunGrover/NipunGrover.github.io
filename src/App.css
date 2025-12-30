@@ -1317,11 +1317,29 @@ span.nipun-bg-text {
   border: none;
   width: 100%;
   font-family: "xenera", sans-serif;
+  overflow: hidden;
+}
+
+.contact form button .btn-ripple {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 0%, transparent 60%);
+  border-radius: 12px;
+  opacity: 0;
+  transform-origin: center;
+  pointer-events: none;
+}
+
+.contact form button .btn-text {
+  position: relative;
+  z-index: 1;
 }
 
 .contact form button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(243, 198, 70, 0.2);
+  /* Hover managed by GSAP */
 }
 
 .contact form .success {
@@ -2443,15 +2461,16 @@ span.nipun-bg-text {
 [data-theme="winter"] .contact form input:focus,
 [data-theme="winter"] .contact form textarea:focus {
   border-color: #64c8f3;
-  box-shadow: 0 0 15px rgba(100, 200, 243, 0.1);
+  box-shadow: none;
 }
 
 [data-theme="winter"] .contact form button {
   background: linear-gradient(90.21deg, #64c8f3 -5.91%, #4a7efe 111.58%);
+  color: #fff;
 }
 
 [data-theme="winter"] .contact form button:hover {
-  box-shadow: 0 10px 20px rgba(100, 200, 243, 0.2);
+  box-shadow: none;
 }
 
 /* Winter theme skills modal styling */
