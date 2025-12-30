@@ -2,10 +2,12 @@ import { Suspense, useState, useEffect, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import { useGLTF, Float, Environment, OrbitControls } from "@react-three/drei";
 import donutUrl from "../assets/3d/donut.glb";
+import donutWinterUrl from "../assets/3d/donut-winter.glb";
+import { useTheme, THEMES } from "../ThemeContext";
 
-function Model(props) {
-  const gltf = useGLTF(donutUrl);
-  return <primitive object={gltf.scene} {...props} />;
+function Model({ url, ...props }) {
+  const gltf = useGLTF(url);
+  return <primitive object={gltf.scene.clone()} {...props} />;
 }
 
 export const Donut = () => {
@@ -14,6 +16,9 @@ export const Donut = () => {
   const [isMobile, setIsMobile] = useState(false);
   const interactionRegionRef = useRef(null);
   const [interactionDomElement, setInteractionDomElement] = useState(null);
+  const { theme } = useTheme();
+
+  const isWinter = theme === THEMES.winter;
 
   useEffect(() => {
     const handleResize = () => {
@@ -56,33 +61,52 @@ export const Donut = () => {
   // On desktop: container is full size
   const containerStyle = isMobile
     ? {
-        position: "absolute",
-        top: "25%",
-        left: "10%",
-        width: "80%",
-        height: "50%",
-        zIndex: 10,
-      }
+      position: "absolute",
+      top: "25%",
+      left: "10%",
+      width: "80%",
+      height: "50%",
+      zIndex: 10,
+    }
     : {
-        width: "100%",
-        height: "100%",
-      };
+      width: "100%",
+      height: "100%",
+    };
 
   // On mobile, make the canvas larger than container and center it
   const canvasContainerStyle = isMobile
     ? {
-        width: "250%",
-        height: "200%",
-        position: "absolute",
-        top: "50%",
-        left: "50%",
-        transform: "translate(-50%, -50%)",
-        pointerEvents: "none",
-      }
+      width: "250%",
+      height: "200%",
+      position: "absolute",
+      top: "50%",
+      left: "50%",
+      transform: "translate(-50%, -50%)",
+      pointerEvents: "none",
+    }
     : {
-        width: "100%",
-        height: "100%",
-      };
+      width: "100%",
+      height: "100%",
+    };
+
+  // Lighting configuration - winter is less warm, more neutral
+  const lightingConfig = isWinter
+    ? {
+      ambient: { intensity: 0.45, color: "#E8E8E8" },
+      directional: { color: "#D4B896", intensity: 1.0 },
+      spot: { color: "#C9A86C", intensity: 0.7 },
+      point1: { color: "#B8956A", intensity: 18 },
+      point2: { color: "#A07840", intensity: 12 },
+      environment: "sunset",
+    }
+    : {
+      ambient: { intensity: 0.4, color: "#FFDAB9" },
+      directional: { color: "#FF8C42", intensity: 1.2 },
+      spot: { color: "#FF7043", intensity: 0.8 },
+      point1: { color: "#FF6B35", intensity: 25 },
+      point2: { color: "#E65100", intensity: 15 },
+      environment: "sunset",
+    };
 
   return (
     <div style={containerStyle}>
@@ -94,31 +118,43 @@ export const Donut = () => {
             touchAction: isMobile ? "auto" : "none",
           }}
         >
-          <ambientLight intensity={0.4} color="#FFDAB9" />
+          <ambientLight
+            intensity={lightingConfig.ambient.intensity}
+            color={lightingConfig.ambient.color}
+          />
           <directionalLight
             position={[0, 2, 6]}
-            intensity={1.2}
-            color="#FF8C42"
+            intensity={lightingConfig.directional.intensity}
+            color={lightingConfig.directional.color}
           />
           <spotLight
             position={[5, 3, 5]}
             angle={0.4}
             penumbra={1}
-            intensity={0.8}
-            color="#FF7043"
+            intensity={lightingConfig.spot.intensity}
+            color={lightingConfig.spot.color}
           />
-          <pointLight position={[0, -3, -5]} color="#FF6B35" intensity={25} />
-          <pointLight position={[3, -4, -4]} color="#E65100" intensity={15} />
+          <pointLight
+            position={[0, -3, -5]}
+            color={lightingConfig.point1.color}
+            intensity={lightingConfig.point1.intensity}
+          />
+          <pointLight
+            position={[3, -4, -4]}
+            color={lightingConfig.point2.color}
+            intensity={lightingConfig.point2.intensity}
+          />
 
           <Suspense fallback={null}>
             <Float speed={2.6} rotationIntensity={0} floatIntensity={0.9}>
               <Model
+                url={isWinter ? donutWinterUrl : donutUrl}
                 scale={scale}
                 position={[0, positionY, 0]}
                 rotation={[0.2, Math.PI, 0]}
               />
             </Float>
-            <Environment preset="sunset" environmentIntensity={0.4} />
+            <Environment preset={lightingConfig.environment} environmentIntensity={0.4} />
           </Suspense>
 
           {!isMobile && (
@@ -163,3 +199,4 @@ export const Donut = () => {
     </div>
   );
 };
+

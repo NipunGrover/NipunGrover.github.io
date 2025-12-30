@@ -1,7 +1,15 @@
+import { useState } from "react";
 import mountainsBg from "../assets/images/hero/hero-bg.svg";
+import winterBg from "../assets/images/hero/winter-hero-bg.svg";
 import { Donut } from "./Donut";
+import { ConsoleModal } from "./ConsoleModal";
+import { useTheme, THEMES } from "../ThemeContext";
 
 export const Banner = () => {
+    const [isConsoleOpen, setIsConsoleOpen] = useState(false);
+    const { theme } = useTheme();
+
+    const currentBg = theme === THEMES.winter ? winterBg : mountainsBg;
 
     return (
         <section className="banner" id="home">
@@ -9,18 +17,31 @@ export const Banner = () => {
             <span className="nipun-bg-text" aria-hidden="true">NIPUN</span>
 
             {/* Mountain Layer */}
-            <div className="mountain-layer" style={{ backgroundImage: `url(${mountainsBg})` }}></div>
+            <div className="mountain-layer" style={{ backgroundImage: `url(${currentBg})` }}></div>
 
             {/* 3D Donut */}
             <div className="banner-donut" aria-hidden="true">
                 <Donut />
             </div>
 
-            {/* System Boot Text - Absolute Positioned per CSS (bottom left) */}
-            <div className="system-boot-text">
+            {/* System Boot Text - Clickable Console Trigger */}
+            <div
+                className="system-boot-text"
+                onClick={() => setIsConsoleOpen(true)}
+                style={{ cursor: 'pointer' }}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => e.key === 'Enter' && setIsConsoleOpen(true)}
+            >
                 {">"} Detecting Full Stack Developer...<br />
                 {">"} User [Nipun] active<span className="cursor">_</span>
             </div>
+
+            {/* Console Modal */}
+            <ConsoleModal
+                isOpen={isConsoleOpen}
+                onClose={() => setIsConsoleOpen(false)}
+            />
 
             {/* Scroll Down Button - Mobile Only */}
             <a href="#skills" className="scroll-down-btn" aria-label="Scroll down">

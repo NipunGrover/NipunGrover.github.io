@@ -661,10 +661,11 @@ span.nipun-bg-text {
   font-size: clamp(11px, 2vw, 16px);
   color: #f3c646;
   text-align: left;
-  z-index: 7;
+  z-index: 100;
   margin: 0;
   display: block;
   opacity: 1;
+  pointer-events: auto;
 }
 
 .mountain-layer {
@@ -2130,5 +2131,264 @@ span.nipun-bg-text {
   .subcategory-title {
     margin-top: 20px;
     text-align: center;
+  }
+}
+
+/************ Theme Variables ************/
+:root {
+  --accent-primary: #f3c646;
+  --accent-secondary: #fe5f4a;
+  --bg-primary: #121212;
+  --bg-secondary: #0f0b19;
+  --text-accent: #f3c646;
+  --gradient-primary: linear-gradient(90.21deg, #f3c646 -5.91%, #fe5f4a 111.58%);
+}
+
+[data-theme="winter"] {
+  --accent-primary: #64c8f3;
+  --accent-secondary: #4a7efe;
+  --bg-primary: #0d1521;
+  --bg-secondary: #0a1628;
+  --text-accent: #64c8f3;
+  --gradient-primary: linear-gradient(90.21deg, #64c8f3 -5.91%, #4a7efe 111.58%);
+}
+
+/* Apply theme colors */
+[data-theme="winter"] .system-boot-text {
+  color: var(--text-accent);
+}
+
+[data-theme="winter"] .cursor {
+  background-color: var(--text-accent);
+}
+
+[data-theme="winter"] .skills-subtitle {
+  color: var(--text-accent);
+}
+
+[data-theme="winter"] .skill-item:hover .skill-icon,
+[data-theme="winter"] .skill-item.selected .skill-icon {
+  border-color: rgba(100, 200, 243, 0.4);
+}
+
+[data-theme="winter"] .exposure-item .dot {
+  background-color: var(--accent-primary);
+}
+
+[data-theme="winter"] .proj-imgbox::before {
+  background: var(--gradient-primary);
+}
+
+[data-theme="winter"] .project .nav.nav-pills .nav-link::before {
+  background: var(--gradient-primary);
+}
+
+[data-theme="winter"] .banner {
+  background-color: var(--bg-primary);
+}
+
+[data-theme="winter"] body {
+  background-color: var(--bg-primary) !important;
+}
+
+[data-theme="winter"] .skills-section {
+  background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-primary) 100%);
+}
+
+/************ Console Modal Styles ************/
+
+.console-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.console-modal {
+  width: 90%;
+  max-width: 700px;
+  max-height: 80vh;
+  background: #1a1a1a;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.console-header {
+  background: #2a2a2a;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.console-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.console-dots .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.console-dots .dot:hover {
+  transform: scale(1.2);
+}
+
+.console-dots .dot.red {
+  background: #ff5f56;
+}
+
+.console-dots .dot.yellow {
+  background: #ffbd2e;
+}
+
+.console-dots .dot.green {
+  background: #27c93f;
+}
+
+.console-title {
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-left: auto;
+}
+
+.console-body {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  font-family: "Courier New", monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  max-height: 400px;
+}
+
+.console-line {
+  margin-bottom: 4px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.console-line.system {
+  color: #888;
+}
+
+.console-line.command {
+  color: #fff;
+}
+
+.console-line.response {
+  color: #d1d1d1;
+}
+
+.console-line.help {
+  color: #a0a0a0;
+}
+
+.console-line.tip {
+  color: var(--text-accent, #f3c646);
+  padding-left: 10px;
+}
+
+.console-line.success {
+  color: #27c93f;
+}
+
+.console-line.error {
+  color: #ff5f56;
+}
+
+.console-line.about {
+  color: var(--text-accent, #f3c646);
+}
+
+.console-input-area {
+  display: flex;
+  align-items: center;
+  padding: 16px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  background: #1e1e1e;
+}
+
+.console-prompt {
+  color: var(--text-accent, #f3c646);
+  font-family: "Courier New", monospace;
+  font-size: 14px;
+  margin-right: 8px;
+}
+
+.console-input {
+  flex: 1;
+  background: none;
+  border: none;
+  color: #fff;
+  font-family: "Courier New", monospace;
+  font-size: 14px;
+  outline: none;
+  caret-color: var(--text-accent, #f3c646);
+}
+
+.console-cursor {
+  width: 8px;
+  height: 16px;
+  background: var(--text-accent, #f3c646);
+  animation: blink 1s step-end infinite;
+  margin-left: 2px;
+}
+
+/* Mobile responsive */
+@media (max-width: 576px) {
+  .console-modal {
+    width: 95%;
+    max-height: 70vh;
+  }
+
+  .console-body {
+    font-size: 12px;
+    padding: 15px;
+  }
+
+  .console-input-area {
+    padding: 12px 15px;
   }
 }
