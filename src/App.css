@@ -2098,13 +2098,13 @@ span.nipun-bg-text {
   margin-top: 30px;
   position: relative;
   overflow: hidden;
+  transition: all 0.15s ease;
 }
 
 .modal-close-btn.premium-btn:hover {
   color: #121212 !important;
   background: #fff !important;
   border-color: #fff !important;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
   /* transform: translateY(-2px); REMOVED */
 }
 

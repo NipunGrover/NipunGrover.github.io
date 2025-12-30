@@ -54,7 +54,7 @@ export const SkillsModal = ({ show, onHide }) => {
                     />
                     <SkillCategory
                         title="DEVOPS & TOOLS"
-                        skills="Git, Docker, Azure, Nginx, Postman, GraphQL"
+                        skills="Git, Docker, Azure, Nginx, Postman, Vitest, Jest, React Router, TanStack Router"
                     />
                     <SkillCategory
                         title="ADDITIONAL EXPERIENCE"
