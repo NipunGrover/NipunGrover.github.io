@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import mountainsBg from "../assets/images/hero/hero-bg.svg";
 import winterBg from "../assets/images/hero/winter-hero-bg.svg";
 import { Donut } from "./Donut";
@@ -7,7 +7,27 @@ import { useTheme, THEMES } from "../ThemeContext";
 
 export const Banner = () => {
     const [isConsoleOpen, setIsConsoleOpen] = useState(false);
+    const [isHovered, setIsHovered] = useState(false);
+    const [hoverText, setHoverText] = useState("");
     const { theme } = useTheme();
+
+    useEffect(() => {
+        if (isHovered) {
+            const targetText = "> Click to initialize";
+            let currentIndex = 0;
+            const interval = setInterval(() => {
+                if (currentIndex < targetText.length) {
+                    setHoverText(targetText.slice(0, currentIndex + 1));
+                    currentIndex++;
+                } else {
+                    clearInterval(interval);
+                }
+            }, 20); // Fast typing speed
+            return () => clearInterval(interval);
+        } else {
+            setHoverText("");
+        }
+    }, [isHovered]);
 
     const currentBg = theme === THEMES.winter ? winterBg : mountainsBg;
 
@@ -28,13 +48,18 @@ export const Banner = () => {
             <div
                 className="system-boot-text"
                 onClick={() => setIsConsoleOpen(true)}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
                 style={{ cursor: 'pointer' }}
                 role="button"
                 tabIndex={0}
                 onKeyDown={(e) => e.key === 'Enter' && setIsConsoleOpen(true)}
             >
                 {">"} Detecting Full Stack Developer...<br />
-                {">"} User [Nipun] active<span className="cursor">_</span>
+                {">"} User [Nipun] active{!isHovered && <span className="cursor">_</span>}<br />
+                <span>
+                    {hoverText || '\u00A0'}{isHovered && <span className="cursor">_</span>}
+                </span>
             </div>
 
             {/* Console Modal */}
