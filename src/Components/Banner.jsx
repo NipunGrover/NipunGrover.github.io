@@ -3,13 +3,27 @@ import mountainsBg from "../assets/images/hero/hero-bg.svg";
 import winterBg from "../assets/images/hero/winter-hero-bg.svg";
 import { Donut } from "./Donut";
 import { ConsoleModal } from "./ConsoleModal";
+import { ConsoleHint } from "./ConsoleHint";
 import { useTheme, THEMES } from "../ThemeContext";
 
 export const Banner = () => {
     const [isConsoleOpen, setIsConsoleOpen] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
     const [hoverText, setHoverText] = useState("");
+    const [hasConsoleOpened, setHasConsoleOpened] = useState(false);
     const { theme } = useTheme();
+
+    const handleOpenConsole = () => {
+        setIsConsoleOpen(true);
+        setHasConsoleOpened(true);
+    };
+
+    // Also mark as opened if it's opened via other means (like keydown)
+    useEffect(() => {
+        if (isConsoleOpen) {
+            setHasConsoleOpened(true);
+        }
+    }, [isConsoleOpen]);
 
     useEffect(() => {
         if (isHovered) {
@@ -32,7 +46,7 @@ export const Banner = () => {
     const currentBg = theme === THEMES.winter ? winterBg : mountainsBg;
 
     return (
-        <section className="banner" id="home">
+        <section className="banner" id="home" style={{ position: "relative" }}>
             {/* Background NIPUN Text */}
             <span className="nipun-bg-text" aria-hidden="true">NIPUN</span>
 
@@ -47,13 +61,13 @@ export const Banner = () => {
             {/* System Boot Text - Clickable Console Trigger */}
             <div
                 className="system-boot-text"
-                onClick={() => setIsConsoleOpen(true)}
+                onClick={handleOpenConsole}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
                 style={{ cursor: 'pointer' }}
                 role="button"
                 tabIndex={0}
-                onKeyDown={(e) => e.key === 'Enter' && setIsConsoleOpen(true)}
+                onKeyDown={(e) => e.key === 'Enter' && handleOpenConsole()}
             >
                 {">"} Detecting Full Stack Developer...<br />
                 {">"} User [Nipun] active{!isHovered && <span className="cursor">_</span>}<br />
@@ -61,6 +75,14 @@ export const Banner = () => {
                     {hoverText || '\u00A0'}{isHovered && <span className="cursor">_</span>}
                 </span>
             </div>
+
+            {/* Console Hint - Only show if console hasn't been opened yet */}
+            {!hasConsoleOpened && (
+                <ConsoleHint
+                    isOpen={isConsoleOpen}
+                    onOpen={handleOpenConsole}
+                />
+            )}
 
             {/* Console Modal */}
             <ConsoleModal
