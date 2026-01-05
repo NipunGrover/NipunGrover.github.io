@@ -973,8 +973,9 @@ span.nipun-bg-text {
 }
 
 .view-all-btn:hover {
-  background: #311a38;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  color: #121212;
+  background: #fff;
+  border-color: #fff;
 }
 
 /* Responsive */
@@ -1306,7 +1307,7 @@ span.nipun-bg-text {
 
 .contact form button {
   font-weight: 700;
-  color: #121212;
+  color: #fff;
   background: linear-gradient(90.21deg, #f3c646 -5.91%, #fe5f4a 111.58%);
   padding: 16px 40px;
   font-size: 18px;
