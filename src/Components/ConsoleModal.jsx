@@ -165,8 +165,6 @@ export const ConsoleModal = ({ isOpen, onClose }) => {
                 <div className="console-header">
                     <div className="console-dots">
                         <span className="dot red" onClick={onClose}></span>
-                        <span className="dot yellow"></span>
-                        <span className="dot green"></span>
                     </div>
                     <span className="console-title">nipun@portfolio:~</span>
                 </div>

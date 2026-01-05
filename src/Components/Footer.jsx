@@ -8,7 +8,7 @@ export const Footer = () => {
             <Container>
                 <Row className="align-items-center justify-content-center">
                     <Col>
-                        <p>Copyright &copy; {new Date().getFullYear()} Nipun Grover</p>
+                        <p>2026 Nipun Grover</p>
                     </Col>
                 </Row>
             </Container>
