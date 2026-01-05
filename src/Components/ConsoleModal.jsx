@@ -191,7 +191,6 @@ export const ConsoleModal = ({ isOpen, onClose }) => {
                         autoComplete="off"
                         spellCheck="false"
                     />
-                    <span className="console-cursor"></span>
                 </form>
             </div>
         </div>
