@@ -41,8 +41,8 @@ export const Projects = () => {
                     "Single sign-on: Integrated Google OAuth, reducing login time to under 2 seconds while keeping accounts secure.",
                     "Backend foundation: Set up Mongoose + MongoDB with clean schemas that now support 10,000+ assets with sub‑100ms query times.",
                     "Core product UI: Built the Asset page filtering system, delivering search-to-screen in under 150ms across thousands of assets.",
-                    "Performance fixes: Eliminated re‑render thrashing and optimized critical flows, cutting perceived load times by 38% and improving Lighthouse performance from 62 to 94.",
-                    "App architecture: Set up the modal system and improved React routing, reducing navigation code complexity by 40% and bundle size by 22%."
+                    "Performance fixes: Eliminated re‑render thrashing and optimized critical flows, cutting perceived load times and improving Lighthouse performance.",
+                    "App architecture: Set up the modal system and improved React routing, simplifying navigation code and reducing bundle size."
                 ]
             },
             {
