@@ -1737,12 +1737,9 @@ span.nipun-bg-text {
 }
 
 .screenshots-grid-stack {
-  max-height: 60vh;
-  overflow-y: auto;
+  /* No fixed max-height - images display fully when space allows */
+  overflow-y: visible;
   padding-right: 10px;
-  /* Scrollbar styling for Webkit */
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
 }
 
 .screenshots-grid-stack::-webkit-scrollbar {
