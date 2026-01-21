@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { ProjectCard } from './ProjectCard';
 import { ProjectModal } from './ProjectModal';
 import notepadOnlineSS from "../assets/images/notepadOnlineSS.jpg";
-import varlabAssetStoreSS from "../assets/images/varlab-asset-store.png";
+import varlabAssetStoreSS from "../assets/images/asset-store/store-homepage.png";
 import pechHomepageSS from "../assets/images/pech/homepage-pech.png";
 import pechModalSS from "../assets/images/pech/modal-pech.png";
 import pechProjectSS from "../assets/images/pech/project-pech.png";

@@ -39,7 +39,6 @@ export const ProjectModal = ({ show, onHide, project }) => {
             {project.link && (
               <div className="mt-4">
                 <Button
-                  variant="primary"
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"

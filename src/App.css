@@ -1717,22 +1717,23 @@ span.nipun-bg-text {
 
 /* Modal Button */
 .modal-visit-btn {
-  background: linear-gradient(90.21deg,
-      #f3c646 -5.91%,
-      #fe5f4a 111.58%) !important;
-  border: none !important;
+  background: transparent !important;
+  color: #fff !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
   padding: 12px 30px !important;
   font-weight: 700 !important;
-  color: #fff !important;
   border-radius: 10px !important;
   font-size: 18px !important;
   letter-spacing: 0.5px !important;
-  transition: 0.3s ease-in-out !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer;
+  text-transform: uppercase;
 }
 
 .modal-visit-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2) !important;
+  color: #121212 !important;
+  background: #fff !important;
+  border-color: #fff !important;
 }
 
 .screenshots-grid-stack {
