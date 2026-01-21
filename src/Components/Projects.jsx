@@ -11,7 +11,8 @@ import pechProjectSS from "../assets/images/pech/project-pech.png";
 import pechResearchSS from "../assets/images/pech/research-pech.png";
 import mainCapySS from "../assets/images/capy/main-capy.png";
 import stringGameSS from "../assets/images/string-game-ss.jpg";
-import shelterManagementSS from "../assets/images/shelter-management-app-ss.jpg";
+import movieTriviaMainSS from "../assets/images/movie-trivia/movie-main.png";
+import movieTriviaIngameSS from "../assets/images/movie-trivia/movie-ingame.png";
 import porfolioWebsiteSS from "../assets/images/portfolio-website-ss.jpg";
 import financeApp from "../assets/images/finance-app.jpg";
 
@@ -73,14 +74,17 @@ export const Projects = () => {
         ],
         [
             {
-                title: "Shelter Management App",
-                description: "Coming soon! Click to view more details",
-                imgUrl: shelterManagementSS,
-                link: "https://github.com/NipunGrover/ShelterManagementApp",
+                title: "Movie Trivia",
+                description: "A real-time multiplayer Movie Trivia game built to learn WebSockets and event-driven state syncing. Features game rooms with shareable codes, host-controlled start flow, live player updates, and reconnect/rejoin handling.",
+                imgUrl: movieTriviaMainSS,
+                screenshots: [movieTriviaMainSS, movieTriviaIngameSS],
+                link: "https://github.com/NipunGrover/MovieTrivia",
                 contributions: [
-                    "Work in progress.",
-                    "Planning the architecture and database schema.",
-                    "Setting up the development environment."
+                    "Implemented game rooms with shareable codes, a host-controlled start flow, live player updates, and reconnect/rejoin handling.",
+                    "Added timed multiple-choice questions, per-question results, and scoring (including speed/time bonuses) powered by server-side game state.",
+                    "Frontend tech: React 19 + TypeScript + Vite + Tailwind CSS, TanStack Router, Zustand, Socket.IO Client.",
+                    "Backend tech: Node.js + Express + Socket.IO, REST endpoints for room creation/validation, CORS, nanoid, questions loaded from JSON.",
+                    "Tooling: ESLint/Prettier, Vitest + Testing Library (client)."
                 ]
             },
             {
