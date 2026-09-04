@@ -69,7 +69,8 @@ export const Banner = () => {
                 tabIndex={0}
                 onKeyDown={(e) => e.key === 'Enter' && handleOpenConsole()}
             >
-                {">"} Detecting Full Stack Developer...<br />
+                {">"} Detecting Data & Automation Analyst...<br />
+                {">"} Software Developer | Power BI · SQL · Python<br />
                 {">"} User [Nipun] active{!isHovered && <span className="cursor">_</span>}<br />
                 <span>
                     {hoverText || '\u00A0'}{isHovered && <span className="cursor">_</span>}

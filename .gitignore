@@ -1,5 +1,6 @@
 .env
 .DS_STORE
+WEBSITE_REPOSITIONING_FINDINGS.md
 node_modules
 scripts/flow/*/.flowconfig
 .flowconfig
