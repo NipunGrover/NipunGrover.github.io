@@ -9,6 +9,7 @@ import { Contact } from './Components/Contact.jsx';
 import { Footer } from './Components/Footer.jsx';
 import { Proj1 } from './Pages/Proj1.jsx';
 import { ThemeProvider } from './ThemeContext.jsx';
+import { CookieConsent } from './Components/CookieConsent.jsx';
 
 function App() {
   return (
@@ -22,7 +23,6 @@ function App() {
               <Skills />
               <Projects />
               <Contact />
-              <Footer />
             </>
           }>
 
@@ -38,6 +38,8 @@ function App() {
           </Route> */}
 
         </Routes>
+        <Footer />
+        <CookieConsent />
       </BrowserRouter>
     </ThemeProvider>
   );

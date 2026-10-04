@@ -1,5 +1,6 @@
 import { Container } from 'react-bootstrap';
 import { Row, Col } from 'react-bootstrap';
+import { openCookieSettings } from '../analyticsConsent';
 
 export const Footer = () => {
 
@@ -9,6 +10,9 @@ export const Footer = () => {
                 <Row className="align-items-center justify-content-center">
                     <Col>
                         <p>2026 Nipun Grover</p>
+                        <button type="button" className="cookie-text-link" onClick={openCookieSettings}>
+                            Cookie settings
+                        </button>
                     </Col>
                 </Row>
             </Container>

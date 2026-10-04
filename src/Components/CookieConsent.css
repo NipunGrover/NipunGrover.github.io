@@ -1,0 +1,62 @@
+.cookie-banner {
+  position: fixed;
+  inset: auto 0 0;
+  z-index: 1040;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0;
+  padding: 8px 20px;
+  color: #f5f5f5;
+  background: #111111;
+  border-top: 1px solid #404040;
+}
+.cookie-banner-copy { flex: 1; min-width: 0; }
+.cookie-banner p { margin: 0; font-size: 13px; line-height: 16px; }
+.cookie-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.cookie-actions button {
+  flex: 1;
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid #737373;
+  border-radius: 8px;
+  color: #fff;
+  background: #262626;
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.cookie-actions button:hover { background: #383838; border-color: #fff; }
+.cookie-banner .cookie-text-link,
+.footer .cookie-text-link {
+  color: #e5e5e5;
+  background: transparent;
+  border: 0;
+  border-radius: 4px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  padding: 6px 0;
+  font-size: 14px;
+}
+.footer .cookie-text-link { min-height: 44px; }
+.cookie-banner .cookie-text-link { padding: 0; font-size: inherit; line-height: inherit; }
+.cookie-banner .cookie-actions { flex-shrink: 0; flex-wrap: nowrap; gap: 8px; }
+.cookie-banner .cookie-actions button { min-height: 32px; padding: 5px 12px; font-size: 13px; line-height: 20px; border-radius: 5px; }
+.cookie-actions button:focus-visible,
+.cookie-text-link:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+.cookie-settings-modal { z-index: 11000; }
+.cookie-settings-backdrop { z-index: 10990; }
+.cookie-settings-modal .modal-content { color: #f5f5f5; background: #111111; border: 1px solid #404040; }
+.cookie-settings-modal .modal-header,
+.cookie-settings-modal .modal-footer { border-color: #404040; }
+.cookie-settings-modal .modal-body { font-size: 16px; line-height: 1.6; }
+.cookie-settings-modal h3 { font-size: 18px; margin-top: 24px; }
+.cookie-settings-modal a { color: #e5e5e5; text-decoration: underline; }
+.cookie-settings-modal .cookie-actions { width: 100%; }
+.cookie-current-choice { font-weight: 700; }
+@media (max-width: 760px) {
+  .cookie-banner { padding: 6px 12px; gap: 10px; }
+  .cookie-banner p { font-size: 12px; }
+  .cookie-banner .cookie-actions button { padding: 5px 10px; font-size: 12px; }
+}
