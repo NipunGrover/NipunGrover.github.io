@@ -7,96 +7,113 @@ import { ConsoleHint } from "./ConsoleHint";
 import { useTheme, THEMES } from "../ThemeContext";
 
 export const Banner = () => {
-    const [isConsoleOpen, setIsConsoleOpen] = useState(false);
-    const [isHovered, setIsHovered] = useState(false);
-    const [hoverText, setHoverText] = useState("");
-    const [hasConsoleOpened, setHasConsoleOpened] = useState(false);
-    const { theme } = useTheme();
+  const [isConsoleOpen, setIsConsoleOpen] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const [hoverText, setHoverText] = useState("");
+  const [hasConsoleOpened, setHasConsoleOpened] = useState(false);
+  const { theme } = useTheme();
 
-    const handleOpenConsole = () => {
-        setIsConsoleOpen(true);
-        setHasConsoleOpened(true);
-    };
+  const handleOpenConsole = () => {
+    setIsConsoleOpen(true);
+    setHasConsoleOpened(true);
+  };
 
-    // Also mark as opened if it's opened via other means (like keydown)
-    useEffect(() => {
-        if (isConsoleOpen) {
-            setHasConsoleOpened(true);
-        }
-    }, [isConsoleOpen]);
+  // Also mark as opened if it's opened via other means (like keydown)
+  useEffect(() => {
+    if (isConsoleOpen) {
+      setHasConsoleOpened(true);
+    }
+  }, [isConsoleOpen]);
 
-    useEffect(() => {
-        if (isHovered) {
-            const targetText = "> Click to initialize";
-            let currentIndex = 0;
-            const interval = setInterval(() => {
-                if (currentIndex < targetText.length) {
-                    setHoverText(targetText.slice(0, currentIndex + 1));
-                    currentIndex++;
-                } else {
-                    clearInterval(interval);
-                }
-            }, 20); // Fast typing speed
-            return () => clearInterval(interval);
+  useEffect(() => {
+    if (isHovered) {
+      const targetText = "> Click to initialize";
+      let currentIndex = 0;
+      const interval = setInterval(() => {
+        if (currentIndex < targetText.length) {
+          setHoverText(targetText.slice(0, currentIndex + 1));
+          currentIndex++;
         } else {
-            setHoverText("");
+          clearInterval(interval);
         }
-    }, [isHovered]);
+      }, 20); // Fast typing speed
+      return () => clearInterval(interval);
+    } else {
+      setHoverText("");
+    }
+  }, [isHovered]);
 
-    const currentBg = theme === THEMES.winter ? winterBg : mountainsBg;
+  const currentBg = theme === THEMES.winter ? winterBg : mountainsBg;
 
-    return (
-        <section className="banner" id="home" style={{ position: "relative" }}>
-            {/* Background NIPUN Text */}
-            <span className="nipun-bg-text" aria-hidden="true">NIPUN</span>
+  return (
+    <section className="banner" id="home" style={{ position: "relative" }}>
+      {/* Background NIPUN Text */}
+      <span className="nipun-bg-text" aria-hidden="true">
+        NIPUN
+      </span>
 
-            {/* Mountain Layer */}
-            <div className="mountain-layer" style={{ backgroundImage: `url(${currentBg})` }}></div>
+      {/* Mountain Layer */}
+      <div
+        className="mountain-layer"
+        style={{ backgroundImage: `url(${currentBg})` }}
+      ></div>
 
-            {/* 3D Donut */}
-            <div className="banner-donut" aria-hidden="true">
-                <Donut />
-            </div>
+      {/* 3D Donut */}
+      <div className="banner-donut" aria-hidden="true">
+        <Donut />
+      </div>
 
-            {/* System Boot Text - Clickable Console Trigger */}
-            <div
-                className="system-boot-text"
-                onClick={handleOpenConsole}
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
-                style={{ cursor: 'pointer' }}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => e.key === 'Enter' && handleOpenConsole()}
-            >
-                {">"} Detecting Data & Automation Analyst...<br />
-                {">"} Software Developer | Power BI · SQL · Python<br />
-                {">"} User [Nipun] active{!isHovered && <span className="cursor">_</span>}<br />
-                <span>
-                    {hoverText || '\u00A0'}{isHovered && <span className="cursor">_</span>}
-                </span>
-            </div>
+      {/* System Boot Text - Clickable Console Trigger */}
+      <div
+        className="system-boot-text"
+        onClick={handleOpenConsole}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        style={{ cursor: "pointer" }}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => e.key === "Enter" && handleOpenConsole()}
+      >
+        {">"} Data & Automation Analyst...
+        <br />
+        {">"} Software Developer | Power BI · SQL · Python
+        <br />
+        {">"} User [Nipun] active
+        {!isHovered && <span className="cursor">_</span>}
+        <br />
+        <span>
+          {hoverText || "\u00A0"}
+          {isHovered && <span className="cursor">_</span>}
+        </span>
+      </div>
 
-            {/* Console Hint - Only show if console hasn't been opened yet */}
-            {!hasConsoleOpened && (
-                <ConsoleHint
-                    isOpen={isConsoleOpen}
-                    onOpen={handleOpenConsole}
-                />
-            )}
+      {/* Console Hint - Only show if console hasn't been opened yet */}
+      {!hasConsoleOpened && (
+        <ConsoleHint isOpen={isConsoleOpen} onOpen={handleOpenConsole} />
+      )}
 
-            {/* Console Modal */}
-            <ConsoleModal
-                isOpen={isConsoleOpen}
-                onClose={() => setIsConsoleOpen(false)}
-            />
+      {/* Console Modal */}
+      <ConsoleModal
+        isOpen={isConsoleOpen}
+        onClose={() => setIsConsoleOpen(false)}
+      />
 
-            {/* Scroll Down Button - Mobile Only */}
-            <a href="#skills" className="scroll-down-btn" aria-label="Scroll down">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M12 5v14M5 12l7 7 7-7" />
-                </svg>
-            </a>
-        </section>
-    );
-}
+      {/* Scroll Down Button - Mobile Only */}
+      <a href="#skills" className="scroll-down-btn" aria-label="Scroll down">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M12 5v14M5 12l7 7 7-7" />
+        </svg>
+      </a>
+    </section>
+  );
+};
