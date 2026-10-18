@@ -9,7 +9,7 @@ export const experience = [
     dates: "May 2026 — Present",
     location: "Cambridge, ON",
     featured: true,
-    summary: "Automating transportation reporting and data workflows, improving operational data quality, and building tools that reduce manual work.",
+    summary: "Building ETL pipelines into BigQuery and Power BI analysis for transportation operations, improving operational data quality, and automating manual reporting and workflows.",
     overview: "Support transportation analytics with Power BI, SQL, BigQuery, Python and Power Automate. Build recurring reporting, workflow automation and independent data collection to support transportation operations, maintenance and cost analysis.",
     details: [
       "Automated KPI reporting into BigQuery and scheduled refreshes, eliminating about 30 minutes of manual work per business day (approximately 130 hours annually).",

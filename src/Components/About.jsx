@@ -3,16 +3,6 @@ import { resumeUrl } from "../data/experience";
 import portrait from "../assets/me-firewatch-artstyle.webp";
 import "./About.css";
 
-// Started at Loblaw in May 2026; the intro counts up from here so it never goes stale
-const ANALYST_START = new Date(2026, 4, 1);
-
-const analystDuration = () => {
-  const months = Math.max(1, Math.round((Date.now() - ANALYST_START) / (1000 * 60 * 60 * 24 * 30.44)));
-  if (months < 12) return `${months} month${months === 1 ? "" : "s"}`;
-  const years = Math.floor(months / 12);
-  return `${years} year${years === 1 ? "" : "s"}`;
-};
-
 export const About = () => {
   return (
     <section className="about-section" id="about" aria-labelledby="about-title">
@@ -21,15 +11,15 @@ export const About = () => {
           <h2 className="about-title" id="about-title">Hi, I'm Nipun.</h2>
 
           <p className="about-lead">
-            I've got <strong>1 year of full-stack development</strong> behind me
-            and <strong>{analystDuration()} as a data analyst</strong>, and I like
-            working where the two overlap.
+            I'm a <strong>data analyst</strong> who has <strong>built and shipped
+            software</strong>.
           </p>
 
           <p>
-            At Loblaw I build Power BI, SQL and Python workflows that have cut
-            <strong> 240+ hours a year</strong> of manual reporting. At VARLab I
-            built full-stack tools for AR/VR teams.
+            At Loblaw I build ETL pipelines into BigQuery and Power BI analysis
+            for transportation operations. I also automate the team's manual
+            reporting and workflows, saving <strong>240+ hours a year</strong>. At
+            VARLab I built full-stack tools for AR/VR teams and deployed them myself.
           </p>
 
           <div className="about-actions">

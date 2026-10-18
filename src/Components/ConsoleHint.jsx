@@ -17,15 +17,15 @@ export const ConsoleHint = ({ isOpen, onOpen }) => {
         const ctx = gsap.context(() => {
             gsap.fromTo(hintRef.current,
                 {
-                    x: 50,
+                    x: 16,
                     opacity: 0,
                 },
                 {
                     x: 0,
                     opacity: 1,
-                    duration: 0.8,
+                    duration: 0.6,
                     delay: 3,
-                    ease: "back.out(1.7)",
+                    ease: "power3.out",
                     pointerEvents: "auto"
                 }
             );
@@ -45,6 +45,34 @@ export const ConsoleHint = ({ isOpen, onOpen }) => {
                         transform: translateY(-50%);
                         z-index: 10;
                     }
+                    /* Terminal-style chip that matches the boot text it points at */
+                    .console-hint {
+                        display: flex;
+                        align-items: center;
+                        gap: 8px;
+                        padding: 8px 14px;
+                        border: 1px solid color-mix(in srgb, var(--accent-primary) 35%, transparent);
+                        border-radius: 6px;
+                        background: rgba(10, 10, 10, 0.55);
+                        backdrop-filter: blur(8px);
+                        -webkit-backdrop-filter: blur(8px);
+                        color: #d8d8d8;
+                        font-family: "Courier New", Courier, monospace;
+                        font-size: 12px;
+                        letter-spacing: 0.5px;
+                        white-space: nowrap;
+                        cursor: pointer;
+                        opacity: 0;
+                        pointer-events: none;
+                        transition: border-color 0.2s, color 0.2s;
+                    }
+                    .console-hint:hover,
+                    .console-hint:focus-visible {
+                        border-color: var(--accent-primary);
+                        color: #fff;
+                        outline: none;
+                    }
+                    .console-hint-prompt { color: var(--accent-primary); }
                     @media (max-width: 768px) {
                         .console-hint-container {
                             top: auto !important;
@@ -55,44 +83,17 @@ export const ConsoleHint = ({ isOpen, onOpen }) => {
                     }
                 `}
             </style>
+            {/* div, not button: the banner's global button styles would override this chip */}
             <div
                 ref={hintRef}
                 onClick={onOpen}
+                onKeyDown={(e) => e.key === "Enter" && onOpen()}
+                role="button"
+                tabIndex={0}
                 className="console-hint console-hint-container"
-                style={{
-                    // Multi-tone background simulating the image
-                    background: "linear-gradient(90deg, #2c3e50 0%, #2c3e50 40%, #34495e 40%, #34495e 100%)",
-                    borderLeft: "3px solid #5d6d7e",
-                    color: "#ecf0f1",
-                    padding: "8px 16px",
-                    borderRadius: "2px",
-                    cursor: "pointer",
-                    fontFamily: "'Courier New', Courier, monospace",
-                    boxShadow: "0 4px 15px rgba(0, 0, 0, 0.4)",
-                    opacity: 0,
-                    pointerEvents: "none",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "8px",
-                    minWidth: "auto"
-                }}
             >
-                <span style={{ fontSize: "12px", fontWeight: "500", letterSpacing: "0.5px", whiteSpace: "nowrap" }}>
-                    tip: click on the console
-                </span>
-
-                {/* Geometric triangle accent (bottom right) */}
-                <div style={{
-                    position: "absolute",
-                    bottom: 0,
-                    right: 0,
-                    width: "0",
-                    height: "0",
-                    borderStyle: "solid",
-                    borderWidth: "0 0 10px 10px",
-                    borderColor: "transparent transparent #212f3d transparent",
-                    opacity: 0.5
-                }} />
+                <span className="console-hint-prompt" aria-hidden="true">&gt;</span>
+                tip: click the console
             </div>
         </>
     );
