@@ -1,6 +1,7 @@
+/* Tinted band between About and Projects (sections alternate base / band with crisp edges) */
 .experience-section {
-  padding: 100px 0 80px;
-  background: var(--bg-primary);
+  padding: 100px 0;
+  background: var(--bg-band);
   scroll-margin-top: 30px;
 }
 

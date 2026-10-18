@@ -37,6 +37,10 @@ export const SkillsModal = ({ show, onHide }) => {
 
                 <div className="premium-skills-container">
                     <SkillCategory
+                        title="DATA ANALYTICS & AUTOMATION"
+                        skills="Power BI, Excel, BigQuery, PostgreSQL, Python"
+                    />
+                    <SkillCategory
                         title="LANGUAGES & RUNTIMES"
                         skills="TypeScript, JavaScript, C#"
                     />
@@ -46,7 +50,7 @@ export const SkillsModal = ({ show, onHide }) => {
                     />
                     <SkillCategory
                         title="DATABASES & BACKEND"
-                        skills="MongoDB, MSSQL, PostgreSQL, Prisma, Drizzle, Socket.io"
+                        skills="MongoDB, MSSQL, Prisma, Drizzle, Socket.io"
                     />
                     <SkillCategory
                         title="UI & STYLING"
@@ -58,7 +62,7 @@ export const SkillsModal = ({ show, onHide }) => {
                     />
                     <SkillCategory
                         title="ADDITIONAL EXPERIENCE"
-                        skills="C, C++, Python, Java, Figma"
+                        skills="C, C++, Java, Figma"
                     />
                 </div>
 
