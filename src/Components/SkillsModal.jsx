@@ -68,7 +68,7 @@ export const SkillsModal = ({ show, onHide }) => {
 
                 <div className="text-center mt-5">
                     <Button className="modal-close-btn premium-btn" onClick={onHide}>
-                        :wq
+                        :q!
                     </Button>
                 </div>
             </Modal.Body>

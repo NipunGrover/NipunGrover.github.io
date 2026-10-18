@@ -1,0 +1,64 @@
+/* Dead-terminal screen left behind by the `sudo rm -rf /*` easter egg */
+.wipe-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 24px;
+  background: var(--bg-primary);
+  animation: wipe-fade-in 0.4s ease both;
+}
+
+.wipe-terminal {
+  width: min(560px, 100%);
+  font-family: "Courier New", Courier, monospace;
+  font-size: clamp(13px, 2vw, 16px);
+  line-height: 1.7;
+  color: #b8b8b8;
+}
+
+.wipe-terminal p { margin: 0; }
+.wipe-terminal .wipe-prompt { margin-top: 12px; color: var(--accent-primary); }
+
+.wipe-cursor {
+  display: inline-block;
+  width: 9px;
+  height: 1.1em;
+  vertical-align: text-bottom;
+  background: var(--accent-primary);
+  animation: blink 1s step-end infinite;
+}
+
+.wipe-reset {
+  padding: 12px 28px;
+  border: 1px solid color-mix(in srgb, var(--accent-primary) 45%, transparent);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--accent-primary);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  animation: wipe-fade-in 0.5s ease both;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.wipe-reset:hover,
+.wipe-reset:focus-visible {
+  background: var(--accent-primary);
+  color: #0a0a0a;
+  outline: none;
+}
+
+@keyframes wipe-fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wipe-screen, .wipe-reset, .wipe-cursor { animation: none; }
+}

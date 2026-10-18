@@ -13,6 +13,7 @@ import { Footer } from './Components/Footer.jsx';
 import { Proj1 } from './Pages/Proj1.jsx';
 import { ThemeProvider } from './ThemeContext.jsx';
 import { CookieConsent } from './Components/CookieConsent.jsx';
+import { SystemWipe } from './Components/SystemWipe.jsx';
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
         </Routes>
         <Footer />
         <CookieConsent />
+        <SystemWipe />
       </BrowserRouter>
     </ThemeProvider>
   );

@@ -1,5 +1,10 @@
 import { useState, useRef, useEffect } from "react";
 import { useTheme, THEMES } from "../ThemeContext";
+import { WIPE_EVENT } from "./SystemWipe";
+
+// Easter egg: `sudo rm -rf /*` (also -fr, plain `/`, --no-preserve-root)
+const RM_RF = /^(sudo )?rm -\s?(rf|fr) (--no-preserve-root )?\/\*?$/;
+const FAKE_DELETES = ["/usr", "/bin", "/etc", "/home/nipun/projects", "/var/www/portfolio", "/node_modules (finally)"];
 
 const TIPS = [
     "> Skill cards are interactive! Click one to select it, then click another to swap their positions.",
@@ -75,6 +80,24 @@ export const ConsoleModal = ({ isOpen, onClose }) => {
 
         // Add command to output
         addOutput(`> ${cmd}`, "command");
+
+        const rm = trimmed.replace(/\s+/g, " ").match(RM_RF);
+        if (rm) {
+            if (!rm[1]) {
+                addOutput("rm: cannot remove '/': Permission denied", "error");
+                addOutput("(real chaos needs sudo)", "help");
+                return;
+            }
+            addOutput("[sudo] password for nipun: ********", "system");
+            FAKE_DELETES.forEach((path, i) => {
+                setTimeout(() => addOutput(`removed '${path}'`, "error"), 250 + i * 140);
+            });
+            setTimeout(() => {
+                onClose();
+                window.dispatchEvent(new Event(WIPE_EVENT));
+            }, 250 + FAKE_DELETES.length * 140 + 400);
+            return;
+        }
 
         switch (command) {
             case "help":
