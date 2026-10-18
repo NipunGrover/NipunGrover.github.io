@@ -1,11 +1,38 @@
 import { useEffect, useState } from 'react';
 import { Modal } from 'react-bootstrap';
+import { useLocation } from 'react-router-dom';
 import { applyConsent, CONSENT_KEY, readConsent, saveConsent, SETTINGS_EVENT } from '../analyticsConsent';
 import './CookieConsent.css';
 
 export function CookieConsent() {
   const [choice, setChoice] = useState(readConsent);
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [bannerReady, setBannerReady] = useState(false);
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    if (bannerReady) return;
+
+    const navigation = document.querySelector('nav.navbar');
+    let revealTimer;
+    // Observe the navbar's actual reveal state rather than duplicating its
+    // scroll threshold. Once triggered, scrolling back up cannot cancel it.
+    const scheduleReveal = () => {
+      if (revealTimer !== undefined) return;
+      if (navigation && !navigation.classList.contains('scrolled')) return;
+      observer?.disconnect();
+      revealTimer = window.setTimeout(() => setBannerReady(true), 1000);
+    };
+    const observer = navigation ? new MutationObserver(scheduleReveal) : null;
+    observer?.observe(navigation, { attributes: true, attributeFilter: ['class'] });
+    // Pages without a navbar use the same delay from their initial render.
+    scheduleReveal();
+
+    return () => {
+      observer?.disconnect();
+      window.clearTimeout(revealTimer);
+    };
+  }, [bannerReady, pathname]);
 
   useEffect(() => {
     const syncConsent = () => {
@@ -44,7 +71,7 @@ export function CookieConsent() {
 
   return (
     <>
-      {!choice && !settingsOpen && (
+      {bannerReady && !choice && !settingsOpen && (
         <section className="cookie-banner" aria-label="Analytics cookie consent">
           <div className="cookie-banner-copy">
             <p>Allow Google Analytics to improve this site?{' '}

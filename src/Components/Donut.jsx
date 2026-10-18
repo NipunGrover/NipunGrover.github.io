@@ -1,13 +1,32 @@
-import { Suspense, useState, useEffect, useRef } from "react";
+import { Component, Suspense, useState, useEffect, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import { useGLTF, Float, Environment, OrbitControls } from "@react-three/drei";
 import donutUrl from "../assets/3d/donut.glb";
 import donutWinterUrl from "../assets/3d/donut-winter.glb";
+// Self-hosted copy of drei's "sunset" preset, so lighting doesn't depend on GitHub at runtime
+import sunsetHdrUrl from "../assets/3d/venice_sunset_1k.hdr";
 import { useTheme, THEMES } from "../ThemeContext";
 
 function Model({ url, ...props }) {
   const gltf = useGLTF(url);
   return <primitive object={gltf.scene.clone()} {...props} />;
+}
+
+// If anything in the 3D scene fails (model load, WebGL), hide the donut instead of crashing the hero
+class SceneErrorBoundary extends Component {
+  state = { failed: false };
+
+  static getDerivedStateFromError() {
+    return { failed: true };
+  }
+
+  componentDidCatch(error) {
+    console.warn("Donut scene disabled:", error);
+  }
+
+  render() {
+    return this.state.failed ? null : this.props.children;
+  }
 }
 
 export const Donut = () => {
@@ -97,7 +116,7 @@ export const Donut = () => {
       spot: { color: "#C9A86C", intensity: 0.7 },
       point1: { color: "#B8956A", intensity: 18 },
       point2: { color: "#A07840", intensity: 12 },
-      environment: "sunset",
+      environment: sunsetHdrUrl,
     }
     : {
       ambient: { intensity: 0.4, color: "#FFDAB9" },
@@ -105,82 +124,84 @@ export const Donut = () => {
       spot: { color: "#FF7043", intensity: 0.8 },
       point1: { color: "#FF6B35", intensity: 25 },
       point2: { color: "#E65100", intensity: 15 },
-      environment: "sunset",
+      environment: sunsetHdrUrl,
     };
 
   return (
     <div style={containerStyle}>
       <div style={canvasContainerStyle}>
-        <Canvas
-          camera={{ position: [0, 0, 6.5], fov: 60 }}
-          style={{
-            pointerEvents: isMobile ? "none" : "auto",
-            touchAction: isMobile ? "auto" : "none",
-          }}
-        >
-          <ambientLight
-            intensity={lightingConfig.ambient.intensity}
-            color={lightingConfig.ambient.color}
-          />
-          <directionalLight
-            position={[0, 2, 6]}
-            intensity={lightingConfig.directional.intensity}
-            color={lightingConfig.directional.color}
-          />
-          <spotLight
-            position={[5, 3, 5]}
-            angle={0.4}
-            penumbra={1}
-            intensity={lightingConfig.spot.intensity}
-            color={lightingConfig.spot.color}
-          />
-          <pointLight
-            position={[0, -3, -5]}
-            color={lightingConfig.point1.color}
-            intensity={lightingConfig.point1.intensity}
-          />
-          <pointLight
-            position={[3, -4, -4]}
-            color={lightingConfig.point2.color}
-            intensity={lightingConfig.point2.intensity}
-          />
+        <SceneErrorBoundary>
+          <Canvas
+            camera={{ position: [0, 0, 6.5], fov: 60 }}
+            style={{
+              pointerEvents: isMobile ? "none" : "auto",
+              touchAction: isMobile ? "auto" : "none",
+            }}
+          >
+            <ambientLight
+              intensity={lightingConfig.ambient.intensity}
+              color={lightingConfig.ambient.color}
+            />
+            <directionalLight
+              position={[0, 2, 6]}
+              intensity={lightingConfig.directional.intensity}
+              color={lightingConfig.directional.color}
+            />
+            <spotLight
+              position={[5, 3, 5]}
+              angle={0.4}
+              penumbra={1}
+              intensity={lightingConfig.spot.intensity}
+              color={lightingConfig.spot.color}
+            />
+            <pointLight
+              position={[0, -3, -5]}
+              color={lightingConfig.point1.color}
+              intensity={lightingConfig.point1.intensity}
+            />
+            <pointLight
+              position={[3, -4, -4]}
+              color={lightingConfig.point2.color}
+              intensity={lightingConfig.point2.intensity}
+            />
 
-          <Suspense fallback={null}>
-            <Float speed={2.6} rotationIntensity={0} floatIntensity={0.9}>
-              <Model
-                url={isWinter ? donutWinterUrl : donutUrl}
-                scale={scale}
-                position={[0, positionY, 0]}
-                rotation={[0.2, Math.PI, 0]}
+            <Suspense fallback={null}>
+              <Float speed={2.6} rotationIntensity={0} floatIntensity={0.9}>
+                <Model
+                  url={isWinter ? donutWinterUrl : donutUrl}
+                  scale={scale}
+                  position={[0, positionY, 0]}
+                  rotation={[0.2, Math.PI, 0]}
+                />
+              </Float>
+              <Environment files={lightingConfig.environment} environmentIntensity={0.4} />
+            </Suspense>
+
+            {!isMobile && (
+              <OrbitControls
+                makeDefault
+                enableDamping
+                dampingFactor={0.08}
+                enableZoom={false}
+                enablePan={false}
+                minPolarAngle={Math.PI / 2}
+                maxPolarAngle={Math.PI / 2}
               />
-            </Float>
-            <Environment preset={lightingConfig.environment} environmentIntensity={0.4} />
-          </Suspense>
-
-          {!isMobile && (
-            <OrbitControls
-              makeDefault
-              enableDamping
-              dampingFactor={0.08}
-              enableZoom={false}
-              enablePan={false}
-              minPolarAngle={Math.PI / 2}
-              maxPolarAngle={Math.PI / 2}
-            />
-          )}
-          {isMobile && interactionDomElement && (
-            <OrbitControls
-              makeDefault
-              enableDamping
-              dampingFactor={0.08}
-              enableZoom={false}
-              enablePan={false}
-              minPolarAngle={Math.PI / 2}
-              maxPolarAngle={Math.PI / 2}
-              domElement={interactionDomElement}
-            />
-          )}
-        </Canvas>
+            )}
+            {isMobile && interactionDomElement && (
+              <OrbitControls
+                makeDefault
+                enableDamping
+                dampingFactor={0.08}
+                enableZoom={false}
+                enablePan={false}
+                minPolarAngle={Math.PI / 2}
+                maxPolarAngle={Math.PI / 2}
+                domElement={interactionDomElement}
+              />
+            )}
+          </Canvas>
+        </SceneErrorBoundary>
       </div>
       {isMobile && (
         <div

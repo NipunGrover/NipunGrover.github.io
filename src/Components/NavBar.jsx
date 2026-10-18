@@ -7,7 +7,6 @@ import { useEffect, useState } from "react";
 import logo from "../assets/images/logo.svg";
 import navIcon1 from "../assets/images/nav-icon1.svg";
 import navIcon2 from "../assets/images/github-logo.svg";
-import navIcon3 from "../assets/images/nav-icon3.svg";
 
 /*
  * NavBar component - represents the navigation bar of the application.
@@ -15,6 +14,7 @@ import navIcon3 from "../assets/images/nav-icon3.svg";
 export const NavBar = () => {
   const [activeLink, setActiveLink] = useState("home");
   const [scrolled, setScrolled] = useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   //this is checking if the user has scrolled down the page, if they have, the navbar will change its style
   //Navbar className has been set in the code below, then css is used to style the navbar acc to scrolled state
@@ -26,19 +26,21 @@ export const NavBar = () => {
         setScrolled(false);
       }
     };
+    onScroll();
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   const onUpdateActiveLink = (link) => {
     setActiveLink(link);
+    setExpanded(false);
   };
 
   return (
-    <Navbar expand="lg" fixed="top" className={scrolled ? "scrolled" : ""}>
+    <Navbar expand="lg" fixed="top" expanded={expanded} onToggle={setExpanded} className={scrolled ? "scrolled" : ""}>
       <Container>
         {/* Brand logo */}
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="#home" onClick={() => onUpdateActiveLink("home")}>
           <img src={logo} alt="Logo" className="navbar-logo" />
         </Navbar.Brand>
         <Navbar.Toggle
@@ -53,6 +55,7 @@ export const NavBar = () => {
           <Nav className="me-auto">
             <Nav.Link
               href="#home"
+              onClick={() => onUpdateActiveLink("home")}
               className={
                 activeLink === "home" ? "active navbar-link" : "navbar-link"
               }
@@ -60,20 +63,29 @@ export const NavBar = () => {
               Home
             </Nav.Link>
             <Nav.Link
-              href="#skills"
-              className={
-                activeLink === "skills" ? "active navbar-link" : "navbar-link"
-              }
+              href="#experience"
+              onClick={() => onUpdateActiveLink("experience")}
+              className={activeLink === "experience" ? "active navbar-link" : "navbar-link"}
             >
-              Skills
+              Experience
             </Nav.Link>
             <Nav.Link
               href="#project"
+              onClick={() => onUpdateActiveLink("project")}
               className={
                 activeLink === "project" ? "active navbar-link" : "navbar-link"
               }
             >
               Projects
+            </Nav.Link>
+            <Nav.Link
+              href="#skills"
+              onClick={() => onUpdateActiveLink("skills")}
+              className={
+                activeLink === "skills" ? "active navbar-link" : "navbar-link"
+              }
+            >
+              Skills
             </Nav.Link>
           </Nav>
           <span className="navbar-text">
@@ -84,21 +96,18 @@ export const NavBar = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <img src={navIcon1} />
+                <img src={navIcon1} alt="LinkedIn" />
               </a>
               <a
                 href="https://github.com/NipunGrover"
                 target="_blank"
                 rel="noreferrer"
               >
-                <img src={navIcon2} />
+                <img src={navIcon2} alt="GitHub" />
               </a>
             </div>
-            {/*console log is just to be replaced later on for actual navigation to the contact form on our application*/}
-            <a href="#connect">
-              <button className="vvd">
-                <span>Let's Connect</span>
-              </button>
+            <a href="#experience" className="vvd" onClick={() => onUpdateActiveLink("experience")}>
+              <span>VIEW RESUME</span>
             </a>
           </span>
         </Navbar.Collapse>

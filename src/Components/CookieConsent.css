@@ -11,6 +11,29 @@
   color: #f5f5f5;
   background: #111111;
   border-top: 1px solid #404040;
+  animation: cookie-banner-fade-in 400ms ease-out both;
+}
+.cookie-banner,
+.cookie-settings-modal .modal-body {
+  font-family: "xenera", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-transform: none;
+}
+.cookie-settings-modal .modal-title,
+.cookie-settings-modal h3,
+.cookie-actions button {
+  font-family: "poster-gothic-atf", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  text-transform: uppercase;
+}
+@keyframes cookie-banner-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cookie-banner { animation: none; }
 }
 .cookie-banner-copy { flex: 1; min-width: 0; }
 .cookie-banner p { margin: 0; font-size: 13px; line-height: 16px; }
@@ -50,7 +73,10 @@
 .cookie-settings-modal .modal-content { color: #f5f5f5; background: #111111; border: 1px solid #404040; }
 .cookie-settings-modal .modal-header,
 .cookie-settings-modal .modal-footer { border-color: #404040; }
-.cookie-settings-modal .modal-body { font-size: 16px; line-height: 1.6; }
+.cookie-settings-modal .modal-body { font-size: 16px; line-height: 1.7; color: #d1d1d1; }
+.cookie-settings-modal .modal-body p { line-height: 1.7; letter-spacing: 0.5px; }
+.cookie-settings-modal .modal-title,
+.cookie-settings-modal h3 { color: #fff; }
 .cookie-settings-modal h3 { font-size: 18px; margin-top: 24px; }
 .cookie-settings-modal a { color: #e5e5e5; text-decoration: underline; }
 .cookie-settings-modal .cookie-actions { width: 100%; }

@@ -1,0 +1,103 @@
+.about-section {
+  padding: 100px 0 90px;
+  background: var(--bg-primary);
+  scroll-margin-top: 30px;
+}
+
+.about-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 400px);
+  align-items: center;
+  gap: 56px;
+}
+
+.about-content {
+  max-width: 780px;
+}
+
+/* Portrait sits on a soft circle; the flat bottom of the bust lines up with the circle's base */
+.about-portrait {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  justify-self: end;
+}
+
+.about-portrait::before {
+  content: "";
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  bottom: 2%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #000;
+  border: 1px solid color-mix(in srgb, var(--accent-primary) 35%, transparent);
+}
+
+.about-portrait img {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.about-title {
+  margin-bottom: 28px;
+  color: #fff;
+  font-size: clamp(40px, 6vw, 60px);
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.about-content p {
+  margin-bottom: 18px;
+  color: #b8b8b8;
+  font-family: "xenera", sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.8;
+}
+
+.about-content .about-lead {
+  color: #fff;
+  font-size: clamp(19px, 2.2vw, 22px);
+  line-height: 1.6;
+}
+
+.about-content strong {
+  color: var(--text-accent);
+  font-weight: 600;
+}
+
+.about-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 36px;
+}
+
+.about-actions .view-all-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.about-actions .view-all-btn:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 4px;
+}
+
+@media (max-width: 991px) {
+  .about-layout { grid-template-columns: 1fr; gap: 40px; }
+  .about-portrait { order: -1; max-width: 300px; justify-self: center; }
+}
+
+@media (max-width: 767px) {
+  .about-section { padding: 64px 0; }
+  .about-title { font-size: clamp(32px, 8vw, 48px); }
+  .about-content p { font-size: 15px; }
+  .about-actions .view-all-btn { flex: 1 1 100%; justify-content: center; padding: 14px 20px; }
+}

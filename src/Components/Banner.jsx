@@ -99,7 +99,7 @@ export const Banner = () => {
       />
 
       {/* Scroll Down Button - Mobile Only */}
-      <a href="#skills" className="scroll-down-btn" aria-label="Scroll down">
+      <a href="#about" className="scroll-down-btn" aria-label="Scroll down">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"

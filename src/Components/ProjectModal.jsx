@@ -1,24 +1,15 @@
-import { Modal, Button, Row, Col } from "react-bootstrap";
+import { Button, Row, Col } from "react-bootstrap";
+import { DetailsModal } from "./DetailsModal";
 
 export const ProjectModal = ({ show, onHide, project }) => {
   if (!project) return null;
 
   return (
-    <Modal
+    <DetailsModal
       show={show}
       onHide={onHide}
-      size="xl"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
-      className="project-modal"
-      contentClassName="project-modal-content"
+      title="Project Details"
     >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Project Details
-        </Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
         <Row>
           <Col md={6} className="modal-left-col">
             <h2>{project.title}</h2>
@@ -73,7 +64,6 @@ export const ProjectModal = ({ show, onHide, project }) => {
             )}
           </Col>
         </Row>
-      </Modal.Body>
-    </Modal>
+    </DetailsModal>
   );
 };

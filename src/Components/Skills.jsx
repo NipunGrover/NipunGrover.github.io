@@ -1,13 +1,15 @@
 import { Container } from "react-bootstrap";
-import jsLogo from "../assets/logo/js-logo.svg";
+import pythonLogo from "../assets/logo/Python.svg";
 import reactLogo from "../assets/images/react-logo.svg";
 import tsLogo from "../assets/logo/typescript.svg";
-import tailwindLogo from "../assets/logo/tailwind.svg";
 import expressLogo from "../assets/logo/expressjs.png";
-import mongoLogo from "../assets/logo/MongoDB.svg";
 import azureLogo from "../assets/logo/azure.svg";
-import cshLogo from "../assets/logo/csh-logo.svg";
+import powerBiLogo from "../assets/logo/Microsoft-Power-Bi--Streamline-Svg-Logos.svg";
+import bigQueryLogo from "../assets/logo/BigQuery.svg";
+import postgresLogo from "../assets/logo/PostgresSQL.svg";
 import skillsBg from "../assets/images/skills-bg.svg";
+import skillsBgWinter from "../assets/images/skills-bg-winter.svg";
+import { useTheme, THEMES } from "../ThemeContext";
 import gsap from "gsap";
 import { Flip } from "gsap/Flip";
 import { useRef, useState } from "react";
@@ -17,14 +19,14 @@ import { SkillsModal } from "./SkillsModal";
 gsap.registerPlugin(Flip);
 
 const skills = [
-  { name: "TypeScript", icon: tsLogo },
+  { name: "Power BI", icon: powerBiLogo },
+  { name: "BigQuery", icon: bigQueryLogo },
+  { name: "PostgreSQL", icon: postgresLogo },
   { name: "React", icon: reactLogo },
-  { name: "Tailwind", icon: tailwindLogo },
-  { name: "Express", icon: expressLogo, invert: true },
-  { name: "MongoDB", icon: mongoLogo },
+  { name: "TypeScript", icon: tsLogo },
   { name: "Azure", icon: azureLogo },
-  { name: "C#", icon: cshLogo },
-  { name: "JavaScript", icon: jsLogo },
+  { name: "Express", icon: expressLogo, invert: true },
+  { name: "Python", icon: pythonLogo },
 ];
 
 export const Skills = () => {
@@ -34,6 +36,8 @@ export const Skills = () => {
 
   const gridRef = useRef(null);
   const isFlippingRef = useRef(false);
+  const { theme } = useTheme();
+  const bg = theme === THEMES.winter ? skillsBgWinter : skillsBg;
 
   const handleSkillClick = (index) => {
     if (isFlippingRef.current) return;
@@ -100,7 +104,7 @@ export const Skills = () => {
       {/* Background layers */}
       <div
         className="skills-bg-layer"
-        style={{ backgroundImage: `url(${skillsBg})` }}
+        style={{ backgroundImage: `url(${bg})` }}
       ></div>
 
       <Container className="skills-content">

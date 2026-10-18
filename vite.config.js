@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  assetsInclude: ['**/*.glb'],
+  assetsInclude: ['**/*.glb', '**/*.hdr'],
   server: {
     host: true, // Allow access from other devices on the network
     proxy: {
